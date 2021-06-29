@@ -10,10 +10,9 @@ Neste pull request se realizou:
 
 ## Checklist
 
-- [ ] Indicar pelo menos um membro da equipe de EPS a ser responsável por analisar as modificações submetidas (Reviewers).
+- [ ] Indicar pelo menos um membro da gerência a ser responsável por analisar as modificações submetidas (Reviewers).
 - [ ] Indicar os membros da equipe que contribuíram com as modificações realizadas (Assignees).
 - [ ] Adicionar as labels referentes ao pull request, de forma similar às da issue correspondente (Labels).
-- [ ] Adicionar a sprint correspondente à execução das modificações (Milestone).
 - [ ] Conectar o PR à sua issue correspondente através da interface do Github (Connect Issue).
 - [ ] Indicar no título do pull request o número e o nome da issue a qual ele se refere.
 - [ ] Escrever o título do pull request no formato correto, conforme as referências abaixo:
