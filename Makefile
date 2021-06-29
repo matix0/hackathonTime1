@@ -1,11 +1,16 @@
+THIS_DIR := $(CURDIR)
+
 start-docker:
-	sudo systemctl start docker
+	systemctl start docker
 
 build:
-	sudo docker-compose build
+	docker-compose build
 
 up:
-	sudo docker-compose up
+	docker-compose up
 
 serve:
-	sudo docker-compose up --build
+	docker-compose up --build
+
+yarn:
+	cd app && yarn && cd .. && cd server && yarn
