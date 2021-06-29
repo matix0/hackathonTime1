@@ -1,8 +1,8 @@
 import * as mongoose from 'mongoose';
 
-const databaseConnect = async () => {
+const databaseConnect = () => {
     try {
-        await mongoose.connect(
+        mongoose.connect(
             process.env.DATABASE_URL,
             {
                 useNewUrlParser: true,
