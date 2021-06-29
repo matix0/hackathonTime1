@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#content-global{
+    display: flex;
+}
+.content-register-box{
+    background: #fff;
+    width: 50%;
+    text-align: center;
+    margin-left: 23vw;
+    box-shadow: 2px 2px green;
+    border-radius: 8px;
+}
