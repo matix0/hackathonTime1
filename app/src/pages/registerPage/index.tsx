@@ -1,6 +1,7 @@
 import { RegisterBox } from '../../components/registerBox'
 import { useCallback, useEffect, useState } from 'react'
 import { getUser, postUser } from '../../services/users'
+import orcSom from '../../assets/orcsom2.png'
 import './style.css'
 
 
@@ -30,6 +31,9 @@ export function RegisterPage(){
 
         // main div
         <div className='content'>
+            <div className="Orcheadset" >
+                <img src={orcSom} alt="orc com headset" />
+            </div>
 
             {/* exported component box */}
             <RegisterBox>

@@ -1,5 +1,4 @@
 /* styling of part of the entire screen */
-
 *{
     margin: 0;
     padding: 0;
@@ -83,4 +82,15 @@ button:hover{
 a{
     font-size: 0.8rem;
     color: #70E864;
+}
+
+.Orcheadset {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.Orcheadset img{
+    width: 40vw;
+    padding-right: 5rem;
 }
