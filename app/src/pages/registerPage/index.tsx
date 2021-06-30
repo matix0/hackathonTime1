@@ -2,7 +2,6 @@ import { RegisterBox } from '../../components/registerBox'
 import {useState, useEffect} from 'react'
 import {getUser} from '../../services/users'
 import './style.css'
-import React from 'react';
 
 export function RegisterPage(){
 
