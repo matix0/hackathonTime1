@@ -1,0 +1,65 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+}
+.lateralBar {
+  display: flex;
+  flex-direction: column;
+  background-color: #e5e5e5;
+  border-right-style: solid;
+  height: 100vh;
+  width: 20vw;
+}
+
+.postBox {
+  display: flex;
+  flex-direction: column;
+  background-color: #e5e5e5;
+  height: 100vh;
+  width: 80vw;
+}
+
+/* divs da barra lateral esquerda */
+.infoBox {
+  display: flex;
+  align-self: center;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7vh;
+  height: 10vh;
+  width: 15vw;
+  border-style: solid;
+}
+.nameBox {
+}
+
+.userBox {
+}
+.optionsBox {
+  display: flex;
+  align-self: center;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7vh;
+  height: 20vh;
+  width: 15vw;
+  border-style: solid;
+}
+
+/* parte dos posts da galera */
+
+.inputBox {
+  display: flex;
+  align-self: center;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7vh;
+  height: 20vh;
+  width: 30vw;
+  border-style: solid;
+}

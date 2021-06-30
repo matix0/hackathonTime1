@@ -1,12 +1,10 @@
-import {RegisterPage} from './pages/registerPage';
+import MainPage from "./pages/mainPage/mainPage";
 
 function App() {
   return (
-
-  <div>
-    Hello World
-    <RegisterPage/>
-  </div>
+    <div>
+      <MainPage />
+    </div>
   );
 }
 
