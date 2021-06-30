@@ -14,16 +14,17 @@ export function RegisterPage(){
                 <div className='title-content'>
                     <h1>Cadastr'orc</h1>
                 </div>
-                
+
                 {/* form with all inputs and types */}
                 <form>
-                    <input type="text" placeholder="Nome"/>
-                    <input type="text"  placeholder="Username"/>
-                    <input type="email" placeholder="Email"/>
-                    <input type="password" placeholder="Senha"/>
-                    <input type="password" placeholder="Confirmar Senha"/>
-                    
-
+                    <div className='input-content'>
+                        <input type="text" placeholder="Nome"/>
+                        <input type="text"  placeholder="Username"/>
+                        <input type="email" placeholder="Email"/>
+                        <input type="password" placeholder="Senha"/>
+                        <input type="password" placeholder="Confirmar Senha"/>
+                    </div>
+                
                     {/* register button where will have connection with back */}
                     <button>
                         Cadastrar
