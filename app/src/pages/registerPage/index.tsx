@@ -1,7 +1,24 @@
 import { RegisterBox } from '../../components/registerBox'
+import {useState, useEffect} from 'react'
+import {getUser} from '../../services/users'
 import './style.css'
+import React from 'react';
 
 export function RegisterPage(){
+
+    const [user, setUser] = useState<any[]>();
+
+    const handleUsers = async () => {
+        const response = await getUser();
+        setUser(response?.data);
+    }
+
+    useEffect(() => {
+        handleUsers();
+    }, []);
+
+
+    console.log(user);
     return (
 
         // main div
@@ -15,10 +32,16 @@ export function RegisterPage(){
                     <h1>Cadastr'orc</h1>
                 </div>
 
+                {/* {user?.map((u:any, index:any) => {
+                    return <p>
+                        {u._id}
+                    </p>
+                })} */}
+
                 {/* form with all inputs and types */}
                 <form>
                     <div className='input-content'>
-                        <input type="text" placeholder="Nome"/>
+                        <input type="text" placeholder="Nome" />
                         <input type="text"  placeholder="Username"/>
                         <input type="email" placeholder="Email"/>
                         <input type="password" placeholder="Senha"/>
@@ -26,7 +49,7 @@ export function RegisterPage(){
                     </div>
                 
                     {/* register button where will have connection with back */}
-                    <button>
+                    <button type="submit">
                         Cadastrar
                     </button>
 
