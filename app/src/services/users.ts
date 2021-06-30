@@ -13,9 +13,12 @@ const getUser = async () => {
 
 const postUser = async (values:any) => {
     try {
-        const response = await axios.post(`${baseUrl}/user`, values)
+        const response = await axios.request({
+            url: `${baseUrl}/user`,
+            method: 'post',
+            data: values
+        })
         return response;
-
     } catch (error) {
         console.error(`Falha na requisição: ${error}`);
     }

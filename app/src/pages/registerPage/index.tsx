@@ -1,23 +1,31 @@
 import { RegisterBox } from '../../components/registerBox'
-import {useState, useEffect} from 'react'
-import {getUser} from '../../services/users'
+import { useCallback, useEffect, useState } from 'react'
+import { getUser, postUser } from '../../services/users'
 import './style.css'
+
 
 export function RegisterPage(){
 
+    // setting registration information
+    const [name, setName] = useState<string>();
+    const [email, setEmail] = useState<string>();
+    const [username, setUsername] = useState<string>();
+    const [password, setPassword] = useState<string>();
+    const [confirmPassword, setConfirmPassword] = useState<string>();
     const [user, setUser] = useState<any[]>();
+    
+    const handleUser = async () => {
+        const values = {
+            name: name,
+            username: username,
+            email: email,
+            password: password
+        };
 
-    const handleUsers = async () => {
-        const response = await getUser();
-        setUser(response?.data);
+        await postUser(values);
     }
 
-    useEffect(() => {
-        handleUsers();
-    }, []);
 
-
-    console.log(user);
     return (
 
         // main div
@@ -31,24 +39,51 @@ export function RegisterPage(){
                     <h1>Cadastr'orc</h1>
                 </div>
 
-                {/* {user?.map((u:any, index:any) => {
-                    return <p>
-                        {u._id}
-                    </p>
-                })} */}
-
                 {/* form with all inputs and types */}
                 <form>
                     <div className='input-content'>
-                        <input type="text" placeholder="Nome" />
-                        <input type="text"  placeholder="Username"/>
-                        <input type="email" placeholder="Email"/>
-                        <input type="password" placeholder="Senha"/>
-                        <input type="password" placeholder="Confirmar Senha"/>
+                        <input 
+                            type="text" 
+                            placeholder="Nome" 
+                            onChange={(e) => {
+                                setName(e.target.value);
+                            }}
+                        />
+                        <input 
+                            type="text"  
+                            placeholder="Username"
+                            onChange={(e) => {
+                                setUsername(e.target.value);
+                            }}
+                        />
+                        <input 
+                            type="email" 
+                            placeholder="Email"
+                            onChange={(e) => {
+                                setEmail(e.target.value);
+                            }}
+                        />
+                        <input 
+                            type="password" 
+                            placeholder="Senha" 
+                            onChange={(e) => {
+                                    setPassword(e.target.value);
+                                }}
+                        />
+                        <input 
+                            type="password" 
+                            placeholder="Confirmar Senha"
+                            onChange={(e) => {
+                                setConfirmPassword(e.target.value);
+                            }}
+                        />
                     </div>
                 
                     {/* register button where will have connection with back */}
-                    <button type="submit">
+                    <button 
+                        type="button" 
+                        onClick={handleUser}
+                    >
                         Cadastrar
                     </button>
 
