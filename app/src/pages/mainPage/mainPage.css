@@ -7,7 +7,7 @@
 .lateralBar {
   display: flex;
   flex-direction: column;
-  background-color: #e5e5e5;
+  background-color: #f4f4f4;
   border-right-style: solid;
   height: 100vh;
   width: 20vw;
@@ -16,7 +16,7 @@
 .postBox {
   display: flex;
   flex-direction: column;
-  background-color: #e5e5e5;
+  background-color: #f4f4f4;
   height: 100vh;
   width: 80vw;
 }
@@ -25,18 +25,21 @@
 .infoBox {
   display: flex;
   align-self: center;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: left;
+  padding-left: 1.5vw;
   margin-top: 7vh;
   height: 10vh;
   width: 15vw;
   border-style: solid;
 }
 .nameBox {
+  display: flex;
 }
 
 .userBox {
+  display: flex;
 }
 .optionsBox {
   display: flex;
@@ -52,14 +55,64 @@
 
 /* parte dos posts da galera */
 
+/* Caixa de post do usuario */
 .inputBox {
   display: flex;
   align-self: center;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 7vh;
+  height: 18vh;
+  width: 30vw;
+  background-color: #ffffff;
+  border-style: solid;
+  border-color: #70e864;
+  border-radius: 25px;
+  margin-right: 10vw;
+}
+
+.inputUsernameBox {
+  display: flex;
+  height: 4vh;
+  width: 21vw;
+  margin-left: 5vw;
+  margin-top: 1.7vh;
+  align-self: start;
+}
+.inputField {
+  display: flex;
+  height: 4vh;
+  width: 21vw;
+  margin-left: 5vw;
+  margin-bottom: 1.7vh;
+  align-self: start;
+}
+
+.sendBtn {
+  display: flex;
+  align-self: end;
+  margin-right: 2vw;
+  margin-top: 1.7vh;
+  margin-bottom: 1.5vh;
+  background-color: #6ae01a;
+  height: 3.5vh;
+  width: 5vw;
+  text-align: center;
+  color: #ffffff;
+}
+/* Caixa de post dos outros  */
+.feedBox {
+  display: flex;
+  align-self: center;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 7vh;
-  height: 20vh;
+  height: 18vh;
   width: 30vw;
+  background-color: #ffffff;
   border-style: solid;
+  border-color: #70e864;
+  border-radius: 25px;
+  margin-right: 10vw;
 }

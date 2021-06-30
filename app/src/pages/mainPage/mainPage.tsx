@@ -15,8 +15,18 @@ const MainPage = () => {
         </div>
       </div>
 
-      <div className="postBox">
-        <div className="inputBox">Escreva aqui</div>
+      <div className="feedField">
+        <div className="postBox">
+          <div className="inputBox">
+            <div className="inputUsernameBox">Zequinha_gameplays</div>
+            <textarea
+              className="inputField"
+              placeholder="Escreva aqui.."
+            ></textarea>
+            <button className="sendBtn">POSTAR</button>
+          </div>
+          <div className="feedBox">Cagar de jaqueta é horrivel!!!</div>
+        </div>
       </div>
     </div>
   );

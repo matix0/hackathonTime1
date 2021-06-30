@@ -31,9 +31,18 @@ export default class UserController {
     }
   };
 
-  getFeed = async (req: Request, res: Response) => {
+  getFeedById = async (req: Request, res: Response) => {
     try {
       var feed = await Feed.findById(req.body.feedId);
+      return res.status(200).send({ feed });
+    } catch (error) {
+      return res.status(400).json({ message: "Falha em criar Feed" });
+    }
+  };
+
+  getFeed = async (req: Request, res: Response) => {
+    try {
+      var feed = await Feed.find({});
       return res.status(200).send({ feed });
     } catch (error) {
       return res.status(400).json({ message: "Falha em criar Feed" });
