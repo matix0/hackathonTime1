@@ -1,9 +1,70 @@
+/* styling of part of the entire screen */
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body{
     background: #70E864;
+}
+
+/* stylization of the registration page title */
+
+.title-content{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+h1{
+    font-family: 'Roboto';
+}
+
+/* stylization of the registration form */
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* styling form inputs */
+
+input{
+    margin-bottom: 1.5rem;
+    border: none;
+    border-bottom: 1px solid rgb(116, 113, 113);
+    outline: none;
+}
+
+input:hover{
+    cursor: pointer;
+}
+
+/* styling form button */
+
+button{
+    width: 10rem;
+    height: 2rem;
+    margin-top: 2rem;
+
+
+    font-weight: bold;
+    background-color: #fff;
+    color: #70E864;
+    border: 1px solid #70E864;
+    transition-duration: 1.0s;
+}
+
+button:hover{
+    cursor: pointer;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+/* styling link */
+
+a{
+    color: #70E864;
 }

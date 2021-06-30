@@ -1,11 +1,11 @@
 import './style.css'
 
-export function RegisterBox(){
+export interface RegisterBoxProps {
+   children: React.ReactNode
+}
+
+export const RegisterBox: React.FC<RegisterBoxProps> = ({ children }) => {
     return(
-        <div id="content-global">
-            <div className="content-register-box">
-                laaaaaaaaaaaaaaaaaaaaaa<br/>laallalalalalal
-            </div>     
-        </div>
-    )
+    <div id="content-global">{children}</div>
+ )
 }
