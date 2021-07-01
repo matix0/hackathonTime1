@@ -3,6 +3,13 @@ import { useCallback, useEffect, useState } from 'react'
 import { getUser, postUser } from '../../services/users'
 import orcSom from '../../assets/orcsom2.png'
 import './style.css'
+export interface ErrorProps{
+    name?: string,
+    username?: string,
+    email?: string,
+    password: string,
+    confirmPassword: string
+}
 
 
 export function RegisterPage(){
@@ -14,7 +21,7 @@ export function RegisterPage(){
     const [password, setPassword] = useState<string>();
     const [confirmPassword, setConfirmPassword] = useState<string>();
     const [user, setUser] = useState<any[]>();
-    const [errors, setErros] = useState<object>();
+    const [errors, setErros] = useState<ErrorProps>();
 
     
     const handleUser = async () => {
@@ -65,7 +72,7 @@ export function RegisterPage(){
         } else if (confirmPassword !== password) {
             errors.confirmPassword = 'Passwords do not match';
         }
-        
+
         await setErros(errors);
         //return errors;
     }
@@ -97,6 +104,7 @@ export function RegisterPage(){
                                 setName(e.target.value);
                             }}
                         />
+                        {errors?.name && <p>{errors.name}</p>}
                         <input 
                             type="text"  
                             placeholder="Username"
@@ -104,6 +112,7 @@ export function RegisterPage(){
                                 setUsername(e.target.value);
                             }}
                         />
+                        {errors?.username && <p>{errors.username}</p>}
                         <input 
                             type="email" 
                             placeholder="Email"
@@ -111,6 +120,7 @@ export function RegisterPage(){
                                 setEmail(e.target.value);
                             }}
                         />
+                        {errors?.email && <p>{errors.email}</p>}
                         <input 
                             type="password" 
                             placeholder="Senha" 
@@ -118,6 +128,7 @@ export function RegisterPage(){
                                     setPassword(e.target.value);
                                 }}
                         />
+                        {errors?.password && <p>{errors.password}</p>}
                         <input 
                             type="password" 
                             placeholder="Confirmar Senha"
@@ -125,6 +136,7 @@ export function RegisterPage(){
                                 setConfirmPassword(e.target.value);
                             }}
                         />
+                        {errors?.confirmPassword && <p>{errors.confirmPassword}</p>}
                     </div>
                 
                     {/* register button where will have connection with back */}
