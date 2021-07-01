@@ -1,9 +1,8 @@
 import { RegisterBox } from '../../components/registerBox'
-import { useCallback, useEffect, useState } from 'react'
-import { getUser, postUser } from '../../services/users'
+import { useState } from 'react'
+import { postUser } from '../../services/users'
 import orcSom from '../../assets/orcsom2.png'
 import './style.css'
-import { StringifyOptions } from 'node:querystring'
 export interface ErrorProps{
     name?: string,
     username?: string,
@@ -30,7 +29,6 @@ export function RegisterPage(){
     const [username, setUsername] = useState<string>();
     const [password, setPassword] = useState<string>();
     const [confirmPassword, setConfirmPassword] = useState<string>();
-    const [user, setUser] = useState<any[]>();
     const [errors, setErrors] = useState<ErrorProps>();
 
     const handleUser = async () => {
@@ -57,29 +55,29 @@ export function RegisterPage(){
         }
 
         if(!name?.trim()) {
-            errors.name = "Name required"
+            errors.name = "Nome é necessário"
         }
 
         if(!username?.trim()) {
-            errors.username = "Username required"
+            errors.username = "Username é necessário"
         }
 
         if (!email) {
-            errors.email = 'Email required';
+            errors.email = 'Email é necessário';
         } else if (!/\S+@\S+\.\S+/.test(email)) {
-            errors.email = 'Email address is invalid';
+            errors.email = 'Endereço de email inválido';
         }
 
         if (!password) {
-            errors.password = 'Password is required';
+            errors.password = 'Senha necessária';
         } else if (password.length < 6) {
-            errors.password = 'Password needs to be 6 characters or more';
+            errors.password = 'Senha precisa ter 6 ou mais caracteres';
         }
 
         if (!confirmPassword) {
-            errors.confirmPassword = 'Password is required';
+            errors.confirmPassword = 'Senha necessária';
         } else if (confirmPassword !== password) {
-            errors.confirmPassword = 'Passwords do not match';
+            errors.confirmPassword = 'Senhas não estão idênticas';
         }
 
         if(confirmPassword === password && password?.length && email && username && name) {
