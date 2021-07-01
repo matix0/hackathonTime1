@@ -3,12 +3,15 @@ import { useCallback, useEffect, useState } from 'react'
 import { getUser, postUser } from '../../services/users'
 import orcSom from '../../assets/orcsom2.png'
 import './style.css'
+import { StringifyOptions } from 'node:querystring'
 export interface ErrorProps{
     name?: string,
     username?: string,
     email?: string,
     password?: string,
-    confirmPassword?: string
+    confirmPassword?: string,
+    emailDoesExist?: string,
+    usernameDoesExist?: string
 }
 export interface UserTypes{
     name?: string,
@@ -40,22 +43,17 @@ export function RegisterPage(){
         };
 
         await validateUser(values);
-
-        //await postUser(values);
     }
 
     const validateUser = async (values: UserTypes) => {
-        const response = await getUser();
-
-        //Use only during test
-        console.log(response?.data);
-
         let errors = {
             name: '',
             username: '',
             email: '',
             password: '',
             confirmPassword: '',
+            emailDoesExist: '',
+            usernameDoesExist: ''
         }
 
         if(!name?.trim()) {
@@ -85,7 +83,17 @@ export function RegisterPage(){
         }
 
         if(confirmPassword === password && password?.length && email && username && name) {
-            await postUser(values);
+            //Use postUser when need to test if the system register the registration
+            try {
+                await postUser(values);
+            } catch (error) {
+                if(error.message === 'email já existe'){
+                    errors.emailDoesExist = 'Email já está sendo utilizado'
+                } else if(error.message === 'Username já existe') {
+                    errors.usernameDoesExist = 'Username já está sendo utilizado'
+                }
+                setErrors(errors)
+            }
         } else {
             setErrors(errors);
         }
@@ -130,6 +138,7 @@ export function RegisterPage(){
                             }}
                         />
                         {errors?.username && <p className="error-text">{errors.username}</p>}
+                        {errors?.usernameDoesExist && <p className="error-text">{errors.usernameDoesExist}</p>}
                         <input 
                             type="email" 
                             placeholder="Email"
@@ -138,6 +147,7 @@ export function RegisterPage(){
                             }}
                         />
                         {errors?.email && <p className="error-text">{errors.email}</p>}
+                        {errors?.emailDoesExist && <p className="error-text">{errors.emailDoesExist}</p>}
                         <input 
                             type="password" 
                             placeholder="Senha" 
