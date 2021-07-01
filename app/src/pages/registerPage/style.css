@@ -1,0 +1,96 @@
+/* styling of part of the entire screen */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #70E864;
+}
+
+/* stylization of the registration page title */
+
+.title-content{
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+}
+
+h1{
+    font-family: 'Roboto';
+}
+
+
+/* stylization of the registration form */
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.input-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* styling form inputs */
+
+input{
+    width: 40%;
+    margin-bottom: 1.5rem;
+    border: none;
+    border-bottom: 1px solid rgb(116, 113, 113);
+    outline: none;
+}
+
+input:hover{
+    cursor: pointer;
+}
+
+/* styling form button */
+
+button{
+    width: 25%;
+    height: 2rem;
+    margin-top: 2rem;
+
+
+    font-weight: bold;
+    background-color: #fff;
+    color: #70E864;
+    border: 1px solid #70E864;
+    transition-duration: 0.6s;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: #70E864;
+    color: #fff;
+}
+
+/* styling link */
+.link-content{
+    width: 100%;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
+
+a{
+    font-size: 0.8rem;
+    color: #70E864;
+}
+
+.Orcheadset {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.Orcheadset img{
+    width: 40vw;
+    padding-right: 5rem;
+}

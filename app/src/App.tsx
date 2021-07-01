@@ -1,12 +1,14 @@
-import {RegisterPage} from './pages/registerPage';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+
+import {RegisterPage} from './pages/registerPage/index';
 
 function App() {
   return (
-
-  <div>
-    Hello World
-    <RegisterPage/>
-  </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact component={RegisterPage}/>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
