@@ -75,17 +75,20 @@
   display: flex;
   height: 4vh;
   width: 21vw;
-  margin-left: 5vw;
+  margin-left: 2.5vw;
   margin-top: 1.7vh;
   align-self: start;
 }
 .inputField {
-  display: flex;
-  height: 4vh;
-  width: 21vw;
-  margin-left: 5vw;
-  margin-bottom: 1.7vh;
+  height: 7vh;
+  width: 25vw;
+  margin-top: 1vw;
+  margin-left: 2.5vw;
   align-self: start;
+  wrap: flex;
+  resize: none;
+  border: none;
+  outline: none;
 }
 
 .sendBtn {
@@ -95,10 +98,13 @@
   margin-top: 1.7vh;
   margin-bottom: 1.5vh;
   background-color: #6ae01a;
-  height: 3.5vh;
+  height: 4vh;
   width: 5vw;
   text-align: center;
+  font-weight: bold;
+  font-size: 1vw;
   color: #ffffff;
+  border: 0;
 }
 /* Caixa de post dos outros  */
 .feedBox {
@@ -115,4 +121,34 @@
   border-color: #70e864;
   border-radius: 25px;
   margin-right: 10vw;
+}
+
+.feedUsernameBox {
+  display: flex;
+  height: 4vh;
+  width: 21vw;
+  margin-left: 5vw;
+  margin-top: 2vh;
+  align-self: start;
+}
+
+.feedTextBox {
+  display: flex;
+  height: 4vh;
+  width: 21vw;
+  margin-left: 5vw;
+  margin-bottom: 1.7vh;
+  align-self: start;
+}
+
+.likeBtn {
+  display: flex;
+  align-self: end;
+  margin-right: 2vw;
+  margin-top: 1.7vh;
+  margin-bottom: 1.5vh;
+  background-color: #f10808;
+  height: 4vh;
+  width: 5vw;
+  border: 0;
 }

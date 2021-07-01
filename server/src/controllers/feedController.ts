@@ -42,7 +42,7 @@ export default class UserController {
 
   getFeed = async (req: Request, res: Response) => {
     try {
-      var feed = await Feed.find({});
+      var feed = await Feed.find({}).sort({creationDate:-1});
       return res.status(200).send({ feed });
     } catch (error) {
       return res.status(400).json({ message: "Falha em criar Feed" });
