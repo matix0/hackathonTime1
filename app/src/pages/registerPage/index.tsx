@@ -7,8 +7,15 @@ export interface ErrorProps{
     name?: string,
     username?: string,
     email?: string,
-    password: string,
-    confirmPassword: string
+    password?: string,
+    confirmPassword?: string
+}
+export interface UserTypes{
+    name?: string,
+    username?: string,
+    email?: string,
+    password?: string,
+    confirmPassword?: string
 }
 
 
@@ -21,9 +28,8 @@ export function RegisterPage(){
     const [password, setPassword] = useState<string>();
     const [confirmPassword, setConfirmPassword] = useState<string>();
     const [user, setUser] = useState<any[]>();
-    const [errors, setErros] = useState<ErrorProps>();
+    const [errors, setErrors] = useState<ErrorProps>();
 
-    
     const handleUser = async () => {
         const values = {
             name: name,
@@ -33,12 +39,17 @@ export function RegisterPage(){
             confirmPassword: confirmPassword
         };
 
-        await validateUser();
+        await validateUser(values);
 
         //await postUser(values);
     }
 
-    const validateUser = async () => {
+    const validateUser = async (values: UserTypes) => {
+        const response = await getUser();
+
+        //Use only during test
+        console.log(response?.data);
+
         let errors = {
             name: '',
             username: '',
@@ -73,8 +84,14 @@ export function RegisterPage(){
             errors.confirmPassword = 'Passwords do not match';
         }
 
-        await setErros(errors);
-        //return errors;
+        if(confirmPassword === password && password?.length && email && username && name) {
+            await postUser(values);
+        } else {
+            setErrors(errors);
+        }
+
+
+        return errors;
     }
 
 
@@ -104,7 +121,7 @@ export function RegisterPage(){
                                 setName(e.target.value);
                             }}
                         />
-                        {errors?.name && <p>{errors.name}</p>}
+                        {errors?.name && <p className="error-text">{errors.name}</p>}
                         <input 
                             type="text"  
                             placeholder="Username"
@@ -112,7 +129,7 @@ export function RegisterPage(){
                                 setUsername(e.target.value);
                             }}
                         />
-                        {errors?.username && <p>{errors.username}</p>}
+                        {errors?.username && <p className="error-text">{errors.username}</p>}
                         <input 
                             type="email" 
                             placeholder="Email"
@@ -120,7 +137,7 @@ export function RegisterPage(){
                                 setEmail(e.target.value);
                             }}
                         />
-                        {errors?.email && <p>{errors.email}</p>}
+                        {errors?.email && <p className="error-text">{errors.email}</p>}
                         <input 
                             type="password" 
                             placeholder="Senha" 
@@ -128,7 +145,7 @@ export function RegisterPage(){
                                     setPassword(e.target.value);
                                 }}
                         />
-                        {errors?.password && <p>{errors.password}</p>}
+                        {errors?.password && <p className="error-text">{errors.password}</p>}
                         <input 
                             type="password" 
                             placeholder="Confirmar Senha"
@@ -136,7 +153,7 @@ export function RegisterPage(){
                                 setConfirmPassword(e.target.value);
                             }}
                         />
-                        {errors?.confirmPassword && <p>{errors.confirmPassword}</p>}
+                        {errors?.confirmPassword && <p className="error-text">{errors.confirmPassword}</p>}
                     </div>
                 
                     {/* register button where will have connection with back */}
