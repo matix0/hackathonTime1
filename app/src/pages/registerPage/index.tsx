@@ -14,16 +14,60 @@ export function RegisterPage(){
     const [password, setPassword] = useState<string>();
     const [confirmPassword, setConfirmPassword] = useState<string>();
     const [user, setUser] = useState<any[]>();
+    const [errors, setErros] = useState<object>();
+
     
     const handleUser = async () => {
         const values = {
             name: name,
             username: username,
             email: email,
-            password: password
+            password: password,
+            confirmPassword: confirmPassword
         };
 
-        await postUser(values);
+        await validateUser();
+
+        //await postUser(values);
+    }
+
+    const validateUser = async () => {
+        let errors = {
+            name: '',
+            username: '',
+            email: '',
+            password: '',
+            confirmPassword: '',
+        }
+
+        if(!name?.trim()) {
+            errors.name = "Name required"
+        }
+
+        if(!username?.trim()) {
+            errors.username = "Username required"
+        }
+
+        if (!email) {
+            errors.email = 'Email required';
+        } else if (!/\S+@\S+\.\S+/.test(email)) {
+            errors.email = 'Email address is invalid';
+        }
+
+        if (!password) {
+            errors.password = 'Password is required';
+        } else if (password.length < 6) {
+            errors.password = 'Password needs to be 6 characters or more';
+        }
+
+        if (!confirmPassword) {
+            errors.confirmPassword = 'Password is required';
+        } else if (confirmPassword !== password) {
+            errors.confirmPassword = 'Passwords do not match';
+        }
+        
+        await setErros(errors);
+        //return errors;
     }
 
 
