@@ -1,0 +1,14 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#content-global{
+    width: 50%;
+    margin-top: 4rem;
+    margin-left: 23vw;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 3px 2px #5a8d3b;
+    text-align: center;
+}
