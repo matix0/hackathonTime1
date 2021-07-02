@@ -1,18 +1,21 @@
 import React,{useEffect,useState} from "react";
 import axios from "axios";
 
+import logOut from "../../assets/log-out.svg";
+import home from "../../assets/home.svg";
 import "./mainPage.css";
 
 interface IFeed{
   text: string,
-  username: string,
-  creationDate: string
+  userId: { username: string},
+  creationDate: string,
+  _id: string
 }
 
 const MainPage = () => {
   
   const [feed,setFeed] = useState<IFeed[]>([{
-    text:"",username:"",creationDate:""
+    text:"",userId:{username:""},creationDate:"",_id:""
   }]);
 
   useEffect (() => { 
@@ -25,7 +28,6 @@ const MainPage = () => {
     console.log(response.data);
     setFeed(response.data.feed);
     
-
   };
   return (
     <div className="container">
@@ -35,12 +37,17 @@ const MainPage = () => {
           <div className="userBox">user</div>
         </div>
         <div className="optionsBox">
-          <div className="homeBtn">home</div>
-          <div className="quitBtn">sair</div>
+          <div className="svgBtn">
+          <img src={home} alt="home"/>
+            <p>home</p></div>
+          <div className="svgBtn">
+            <img src={logOut} alt="logout"/>
+            <p>sair</p>
+            </div>
         </div>
       </div>
 
-      <div className="feedField">
+      <div >
         <div className="postBox">
           <div className="inputBox">
             <div className="inputUsernameBox">Zequinha_gameplays</div>
@@ -48,18 +55,20 @@ const MainPage = () => {
               className="inputField"
               placeholder="Escreva aqui.."
             ></textarea>
-            <button className="sendBtn" onClick={(e)=> {console.log(feed)}}>POSTAR</button>
+            <button className="sendBtn" onClick={(e)=> {console.log("asdasd")
+            }}>POSTAR</button>
           </div>
+          <div className="scrollBox">
           {feed && feed.map(feedPost =>(
-            <div>
-            <div className="feedBox">
-            <div className="feedUsernameBox">Xampson</div>
+            <div className="feedBox" key={feedPost._id}>
+            <div className="feedUsernameBox">{feedPost.userId.username}</div>
             <div className="feedTextBox">{feedPost.text}</div>
-            <button className="likeBtn"></button>
+            <button className="likeBtn" onClick={(e)=> {console.log(feedPost)
+            }}></button>
             </div>
-          </div>
           ))
-          }
+        }
+        </div>
         </div>
       </div>
     </div>

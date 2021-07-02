@@ -44,13 +44,11 @@
 .optionsBox {
   display: flex;
   align-self: center;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 7vh;
-  height: 20vh;
   width: 15vw;
-  border-style: solid;
 }
 
 /* parte dos posts da galera */
@@ -77,15 +75,15 @@
   width: 21vw;
   margin-left: 2.5vw;
   margin-top: 1.7vh;
-  align-self: start;
+   align-self: start; 
 }
+
 .inputField {
-  height: 7vh;
+  height: 8vh;
   width: 25vw;
   margin-top: 1vw;
   margin-left: 2.5vw;
   align-self: start;
-  wrap: flex;
   resize: none;
   border: none;
   outline: none;
@@ -93,7 +91,7 @@
 
 .sendBtn {
   display: flex;
-  align-self: end;
+  align-self: flex-end;
   margin-right: 2vw;
   margin-top: 1.7vh;
   margin-bottom: 1.5vh;
@@ -109,7 +107,9 @@
 /* Caixa de post dos outros  */
 .feedBox {
   display: flex;
-  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: aqua;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -120,7 +120,7 @@
   border-style: solid;
   border-color: #70e864;
   border-radius: 25px;
-  margin-right: 10vw;
+
 }
 
 .feedUsernameBox {
@@ -143,7 +143,7 @@
 
 .likeBtn {
   display: flex;
-  align-self: end;
+  align-self: flex-end;
   margin-right: 2vw;
   margin-top: 1.7vh;
   margin-bottom: 1.5vh;
@@ -151,4 +151,27 @@
   height: 4vh;
   width: 5vw;
   border: 0;
+}
+
+.scrollBox{
+  margin-left: 16.5vw;
+  width: 38vw;
+  height: 80vh;
+  margin-top: 2vh;
+  overflow-y: auto;
+} 
+
+.svgBtn{
+  margin-top: 1vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img{
+  height: 6.5vh;
+}
+
+.p{
+  margin-bottom: 1vh;
 }
