@@ -1,9 +1,10 @@
 import React,{useEffect,useState} from "react";
-import axios from "axios";
+import PostBox from "../../components/posts";
+import feedService from '../../services/feed';
 
 import logOut from "../../assets/log-out.svg";
 import home from "../../assets/home.svg";
-import "./mainPage.css";
+import "./style.css";
 
 interface IFeed{
   text: string,
@@ -12,37 +13,48 @@ interface IFeed{
   _id: string
 }
 
+
+
 const MainPage = () => {
-  
+  const [name,setName] = useState("nome sobrenome sobresobrenome")
   const [feed,setFeed] = useState<IFeed[]>([{
     text:"",userId:{username:""},creationDate:"",_id:""
   }]);
 
+  const changeName = () =>{
+    const finalName = name.replaceAll(" ","\n");
+    setName(finalName);
+  }
+
   useEffect (() => { 
     getFeed();
-  },
-  []);
+    changeName();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
+
   
   const getFeed = async()=>  {
-    const response = await axios.get("http://localhost:3001/feed");
-    console.log(response.data);
+    const response = await feedService();
     setFeed(response.data.feed);
-    
   };
+
+
   return (
     <div className="container">
       <div className="lateralBar">
         <div className="infoBox">
-          <div className="nameBox">nome</div>
-          <div className="userBox">user</div>
+          <div className="nameBox">
+            {name}<br/><br/>
+            3132132s1da3sd456
+            </div>
         </div>
         <div className="optionsBox">
           <div className="svgBtn">
           <img src={home} alt="home"/>
-            <p>home</p></div>
+            <p>Home</p></div>
           <div className="svgBtn">
             <img src={logOut} alt="logout"/>
-            <p>sair</p>
+            <p>Sair</p>
             </div>
         </div>
       </div>
@@ -55,17 +67,12 @@ const MainPage = () => {
               className="inputField"
               placeholder="Escreva aqui.."
             ></textarea>
-            <button className="sendBtn" onClick={(e)=> {console.log("asdasd")
+            <button className="sendBtn" onClick={(e)=> {changeName()
             }}>POSTAR</button>
           </div>
           <div className="scrollBox">
-          {feed && feed.map(feedPost =>(
-            <div className="feedBox" key={feedPost._id}>
-            <div className="feedUsernameBox">{feedPost.userId.username}</div>
-            <div className="feedTextBox">{feedPost.text}</div>
-            <button className="likeBtn" onClick={(e)=> {console.log(feedPost)
-            }}></button>
-            </div>
+          {feed.length !== 0 && feed.map(feedPost =>(
+              <PostBox username={feedPost.userId.username} text={feedPost.text}/>
           ))
         }
         </div>

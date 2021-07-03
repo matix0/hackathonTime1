@@ -30,12 +30,13 @@
   align-items: left;
   padding-left: 1.5vw;
   margin-top: 7vh;
-  height: 10vh;
   width: 15vw;
-  border-style: solid;
+  font-weight: 700;
+  font-size: larger;
 }
 .nameBox {
   display: flex;
+  white-space: pre-line;
 }
 
 .userBox {
@@ -60,13 +61,14 @@
   flex-direction: column;
   justify-content: flex-start;
   margin-top: 7vh;
-  height: 18vh;
-  width: 30vw;
+  height: 28vh;
+  width: 40vw;
   background-color: #ffffff;
   border-style: solid;
   border-color: #70e864;
   border-radius: 25px;
   margin-right: 10vw;
+  box-shadow: 4px 3px 4px rgba(0, 0, 0, 0.25);
 }
 
 .inputUsernameBox {
@@ -79,8 +81,8 @@
 }
 
 .inputField {
-  height: 8vh;
-  width: 25vw;
+  height: 18vh;
+  width: 35vw;
   margin-top: 1vw;
   margin-left: 2.5vw;
   align-self: start;
@@ -90,88 +92,35 @@
 }
 
 .sendBtn {
-  display: flex;
-  align-self: flex-end;
-  margin-right: 2vw;
+  margin-left: 27vw;
   margin-top: 1.7vh;
   margin-bottom: 1.5vh;
   background-color: #6ae01a;
-  height: 4vh;
-  width: 5vw;
+  height: 11vh;
   text-align: center;
   font-weight: bold;
-  font-size: 1vw;
   color: #ffffff;
-  border: 0;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 /* Caixa de post dos outros  */
-.feedBox {
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: aqua;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 7vh;
-  height: 18vh;
-  width: 30vw;
-  background-color: #ffffff;
-  border-style: solid;
-  border-color: #70e864;
-  border-radius: 25px;
-
-}
-
-.feedUsernameBox {
-  display: flex;
-  height: 4vh;
-  width: 21vw;
-  margin-left: 5vw;
-  margin-top: 2vh;
-  align-self: start;
-}
-
-.feedTextBox {
-  display: flex;
-  height: 4vh;
-  width: 21vw;
-  margin-left: 5vw;
-  margin-bottom: 1.7vh;
-  align-self: start;
-}
-
-.likeBtn {
-  display: flex;
-  align-self: flex-end;
-  margin-right: 2vw;
-  margin-top: 1.7vh;
-  margin-bottom: 1.5vh;
-  background-color: #f10808;
-  height: 4vh;
-  width: 5vw;
-  border: 0;
-}
 
 .scrollBox{
-  margin-left: 16.5vw;
-  width: 38vw;
+  margin-left: 14.5vw;
+  width: 65.5vw;
   height: 80vh;
   margin-top: 2vh;
   overflow-y: auto;
 } 
 
 .svgBtn{
-  margin-top: 1vh;
+  margin-top: 2vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: 700;
 }
 
-img{
-  height: 6.5vh;
-}
-
-.p{
-  margin-bottom: 1vh;
+.svgBtn img{
+  height: 8vh;
 }

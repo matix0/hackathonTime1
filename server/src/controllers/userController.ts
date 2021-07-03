@@ -6,10 +6,6 @@ export default class UserController {
     createUser = async(req: Request, res: Response) => {
         const {name, username, email, password} = req.body
         try {
-<<<<<<< HEAD
-            const userCreated = await User.create(req.body);
-            res.status(200).send({userCreated});
-=======
             const userExists = await User.findOne({username})
             const emailExists = await User.findOne({email})
             if(userExists) {
@@ -26,7 +22,6 @@ export default class UserController {
                 password: hashedPassword
             });
             return res.status(200).json({message: "Usuário criado com sucesso"})
->>>>>>> main
         } catch (error) {
             return res.status(400).json({message: "Falha em criar usuário"})
         }

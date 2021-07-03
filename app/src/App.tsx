@@ -7,7 +7,9 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact component={RegisterPage}/>
+        <Route path="/register" exact component={RegisterPage}/>
+        <Route path="/" exact component={MainPage}/>
+
       </Switch>
     </BrowserRouter>
   );

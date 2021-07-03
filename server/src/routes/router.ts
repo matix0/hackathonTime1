@@ -10,5 +10,5 @@ const router = Router();
 router.use('/', homeRoutes);
 router.use('/user', userRoutes);
 router.use('/feed', feedRoutes);
-
+ 
 export default router;
