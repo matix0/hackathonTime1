@@ -25,4 +25,17 @@ const postUser = async (values:any) => {
     }
 }
 
-export {getUser, postUser};
+const postUserLogin = async (values: any) => {
+    try {
+        const response = await axios.request({
+            url: `${baseUrl}/user/login`,
+            method: 'post',
+            data: values
+        })
+        return response
+    } catch (error) {
+        throw new Error(error.response.data.message)
+    }
+}
+
+export {getUser, postUser, postUserLogin};
