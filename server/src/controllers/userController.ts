@@ -1,6 +1,9 @@
 import {Request, Response} from 'express'
 import User from '../models/userSchema'
 import * as bcrypt from 'bcryptjs'
+import * as jwt from 'jsonwebtoken';
+import { secret } from '../config/auth.secret';
+
 
 export default class UserController {
     createUser = async(req: Request, res: Response) => {
@@ -38,22 +41,27 @@ export default class UserController {
     loginUser = async(req: Request, res: Response) => {
         const {email, password} = req.body
         try {
-            const emailExists = await User.findOne({email})
-            if(!emailExists) {
+            const userExists = await User.findOne({email})
+            if(!userExists) {
                 return res.status(400).json({message: "Usuário não encontrado"})
             }
-            const result = bcrypt.compareSync(password, emailExists.password);
+            const result = bcrypt.compareSync(password, userExists.password);
             if (result) {
-                console.log("Password correct");
-                return res.status(200).json({message: "Senhas está correta"})
+                const token = jwt.sign({ id: userExists._id }, secret, {
+                    expiresIn: 86400 // 24 hours
+                });
+                return res.status(200).json({
+                    auth: true,
+                    token: token,
+                    result: userExists
+                })
             } else {
-                console.log("Senha está incorreta");
                 return res.status(400).json({message: "Senha está incorreta"})
             }
 
         } catch (error) {
             return res.status(400).json({message: "Falha em logar usuário"})
         }
-    }    
+    }
 }
 

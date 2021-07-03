@@ -1,4 +1,5 @@
 import {Router} from 'express';
+import { verifyToken } from '../services/middleware';
 import UserController from '../controllers/userController';
 
 
@@ -9,7 +10,7 @@ userRoutes.post('/', (req , res) => {
     userController.createUser(req, res);
 });
 
-userRoutes.get('/', (req, res) => {
+userRoutes.get('/', verifyToken, (req, res) => {
     userController.getAllUsers(req,res);
 });
 
