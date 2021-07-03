@@ -35,5 +35,25 @@ export default class UserController {
         }
     }
 
+    loginUser = async(req: Request, res: Response) => {
+        const {email, password} = req.body
+        try {
+            const emailExists = await User.findOne({email})
+            if(!emailExists) {
+                return res.status(400).json({message: "Usuário não encontrado"})
+            }
+            const result = bcrypt.compareSync(password, emailExists.password);
+            if (result) {
+                console.log("Password correct");
+                return res.status(200).json({message: "Senhas está correta"})
+            } else {
+                console.log("Senha está incorreta");
+                return res.status(400).json({message: "Senha está incorreta"})
+            }
+
+        } catch (error) {
+            return res.status(400).json({message: "Falha em logar usuário"})
+        }
+    }    
 }
 
