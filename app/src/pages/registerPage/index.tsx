@@ -1,6 +1,8 @@
 import { RegisterBox } from '../../components/registerBox'
 import { useState } from 'react'
 import { postUser } from '../../services/users'
+import {Link} from 'react-router-dom'
+
 import orcSom from '../../assets/orcsom2.png'
 import './style.css'
 export interface ErrorProps{
@@ -177,7 +179,7 @@ export function RegisterPage(){
 
                 {/* link to login page */}
                 <div className="link-content">
-                    <a href="/">Uau, esqueci que já tenho uma conta :P</a>
+                    <Link to="/login">Já tenho uma conta</Link>
                 </div>
                 
             </RegisterBox>
