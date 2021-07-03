@@ -1,0 +1,43 @@
+.feedBox {
+    display: flex;
+    margin-left: 0.5vw;
+    background-color: aqua;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 7vh;
+    height: 28vh;
+    width: 40vw;
+    background-color: #ffffff;
+    border-style: solid;
+    border-color: #70e864;
+    border-radius: 25px;
+    box-shadow: 4px 3px 4px rgba(0, 0, 0, 0.25);
+}
+
+.feedUsernameBox {
+    display: flex;
+    height: 4vh;
+    width: 21vw;
+    margin-left: 5vw;
+    margin-top: 2vh;
+    align-self: start;
+    font-weight: 700;
+}
+
+.feedTextBox {
+    display: flex;
+    height: 4vh;
+    width: 21vw;
+    margin-left: 5vw;
+    margin-bottom: 1.7vh;
+    align-self: start;
+}
+
+#likeBtn {
+    display: flex;
+    align-self: flex-end;
+    margin-right: 1.4vw;
+    margin-bottom: 1.5vh;
+    height: 6vh;
+}
