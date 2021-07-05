@@ -1,6 +1,8 @@
 import { RegisterBox } from '../../components/registerBox'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { postUser } from '../../services/users'
+import {Link, useHistory} from 'react-router-dom'
+
 import orcSom from '../../assets/orcsom2.png'
 import './style.css'
 export interface ErrorProps{
@@ -23,6 +25,7 @@ export interface UserTypes{
 
 export function RegisterPage(){
 
+    const history = useHistory()
     // setting registration information
     const [name, setName] = useState<string>();
     const [email, setEmail] = useState<string>();
@@ -84,6 +87,7 @@ export function RegisterPage(){
             //Use postUser when need to test if the system register the registration
             try {
                 await postUser(values);
+                history.push('/login');
             } catch (error) {
                 if(error.message === 'email já existe'){
                     errors.emailDoesExist = 'Email já está sendo utilizado'
@@ -99,6 +103,12 @@ export function RegisterPage(){
 
         return errors;
     }
+
+    useEffect (() => {
+        if(localStorage.getItem('token')) {
+            history.push('/')
+        }
+    },[history]);
 
 
     return (
@@ -177,7 +187,7 @@ export function RegisterPage(){
 
                 {/* link to login page */}
                 <div className="link-content">
-                    <a href="/">Uau, esqueci que já tenho uma conta :P</a>
+                    <Link to="/login">Já tenho uma conta</Link>
                 </div>
                 
             </RegisterBox>

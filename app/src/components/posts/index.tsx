@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import {useState} from "react";
 
 import heart from "../../assets/heart.svg";
 import fullHeart from "../../assets/fullHeart.svg";
