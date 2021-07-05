@@ -1,11 +1,10 @@
 import {Link, useHistory} from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { RegisterBox } from "../../components/registerBox"
 import orcjump from "../../assets/orcjump.png"
 import "./style.css"
 import { postUserLogin } from '../../services/users'
-
 
 function LoginPage() {
     const [email, setEmail] = useState<string>()
@@ -34,6 +33,13 @@ function LoginPage() {
             }
         }
     }
+
+    useEffect (() => {
+        if(localStorage.getItem('token')) {
+            history.push('/')
+        }
+    },[history]);
+    
 
     return (
             <div className="content">

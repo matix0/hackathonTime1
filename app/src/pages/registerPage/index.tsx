@@ -1,7 +1,7 @@
 import { RegisterBox } from '../../components/registerBox'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { postUser } from '../../services/users'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 
 import orcSom from '../../assets/orcsom2.png'
 import './style.css'
@@ -24,7 +24,7 @@ export interface UserTypes{
 
 
 export function RegisterPage(){
-
+    const history = useHistory()
     // setting registration information
     const [name, setName] = useState<string>();
     const [email, setEmail] = useState<string>();
@@ -101,6 +101,12 @@ export function RegisterPage(){
 
         return errors;
     }
+
+    useEffect (() => {
+        if(localStorage.getItem('token')) {
+            history.push('/')
+        }
+    },[history]);
 
 
     return (
