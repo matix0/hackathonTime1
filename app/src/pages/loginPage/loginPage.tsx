@@ -21,7 +21,6 @@ function LoginPage() {
             // set id token in localStorage
             localStorage.setItem('token', response.data.token)
             localStorage.setItem('id', response.data.result._id)
-            
             if(localStorage.getItem('token')) {
                 history.push("/")    
             }
