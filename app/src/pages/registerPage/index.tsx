@@ -24,6 +24,7 @@ export interface UserTypes{
 
 
 export function RegisterPage(){
+
     const history = useHistory()
     // setting registration information
     const [name, setName] = useState<string>();
@@ -86,6 +87,7 @@ export function RegisterPage(){
             //Use postUser when need to test if the system register the registration
             try {
                 await postUser(values);
+                history.push('/login');
             } catch (error) {
                 if(error.message === 'email já existe'){
                     errors.emailDoesExist = 'Email já está sendo utilizado'

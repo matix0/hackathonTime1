@@ -38,6 +38,7 @@ function LoginPage() {
         if(localStorage.getItem('token')) {
             history.push('/')
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[history]);
     
 
