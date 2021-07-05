@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import { useState } from 'react'
 
 import { RegisterBox } from "../../components/registerBox"
@@ -11,12 +11,20 @@ function LoginPage() {
     const [email, setEmail] = useState<string>()
     const [password, setPassword] = useState<string>()
     const [error, setError] = useState<string>()
+    const history = useHistory()
 
     const handleLogin = async () => {
         try {
             const values = {email, password}
-            await postUserLogin(values)
-            console.log('login realizado com sucesso')
+            const response = await postUserLogin(values)
+
+            // set id token in localStorage
+            localStorage.setItem('token', response.data.token)
+            localStorage.setItem('id', response.data.result._id)
+            
+            if(localStorage.getItem('token')) {
+                history.push("/")    
+            }
             setError('')
         } catch (err) {
             console.log(err.message)
@@ -57,9 +65,9 @@ function LoginPage() {
                     <button type="button" onClick={handleLogin}>Entrar</button>
 
                     <div className="link-content">
-                    <Link to="/login">Esqueci minha senha</Link>
-                    <br />
-                    <Link  to="/register">Preciso criar uma conta</Link>
+                        <Link to="/login">Esqueci minha senha</Link>
+                        <br />
+                        <Link  to="/register">Preciso criar uma conta</Link>
                     </div>
                 </RegisterBox>
             </div>

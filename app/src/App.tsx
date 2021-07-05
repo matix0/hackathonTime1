@@ -11,6 +11,7 @@ function App() {
         <Route path="/register" exact component={RegisterPage}/>
         <Route path="/" exact component={MainPage}/>
         <Route path="/login" exact component={LoginPage}/>
+        {/* <ProtectedRoute path="/" exact component={MainPage} /> */}
       </Switch>
     </BrowserRouter>
   );
