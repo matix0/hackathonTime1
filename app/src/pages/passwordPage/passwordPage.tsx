@@ -1,9 +1,39 @@
 import {Link} from 'react-router-dom'
-
+import { useState } from 'react'
 import { RegisterBox } from "../../components/registerBox";
 import orcjump from "../../assets/orcjump.png"
+import { postEmailUser } from '../../services/users';
+
 
 function PasswordPage() {
+
+    const [email, setEmail] = useState<string>()
+    const [errorMail, setErrors] = useState<string>();
+    const [errorInfo, setErrorInfo] = useState<string>();
+    const [message, setMessage] = useState<string>();
+    const values = {email}
+
+    const handleForgotPassword = async () => {
+        let error = {
+            email: ''
+        }
+        try {
+            if (!email) { 
+                error.email = 'Email é necessário'
+                setErrorInfo('') 
+                return setErrors(error.email)
+            }
+            setErrors('Checando seu email')
+            await postEmailUser(values)
+            setErrors('')
+            setErrorInfo('')
+            return setMessage("Email de recuperação de senha foi enviado para seu email")
+        } catch (error) {
+            setErrors('')
+            return setErrorInfo(error.message)
+        }   
+    }
+
     return (
         <div className="content">
             <RegisterBox>
@@ -20,10 +50,13 @@ function PasswordPage() {
                             <input
                                 type="email"
                                 placeholder="Email" 
-                                //onChange={(e) => {setEmail(e.target.value)}}
+                                onChange={(e) => {setEmail(e.target.value)}}
                             />
+                            {errorInfo && <p className="error-text">{errorInfo}</p>}
+                            {errorMail && <p className="error-text">{errorMail}</p>}
                     </div>
-                    <button>Pronto!</button>
+                    {message && <p className="error-text">{message}</p>}
+                    <button onClick={() => {handleForgotPassword()}}>Pronto!</button>
                     <div className="link-content">
                         <Link to="/login">Voltar para tela de login</Link>
                     </div>

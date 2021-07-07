@@ -1,6 +1,5 @@
 import {Link, useHistory} from 'react-router-dom'
 import { useEffect, useState } from 'react'
-
 import { RegisterBox } from "../../components/registerBox"
 import orcjump from "../../assets/orcjump.png"
 import "./style.css"

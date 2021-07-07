@@ -29,13 +29,17 @@ export default class PasswordController{
             to: userExists.email,
             subject: 'Recuperação de Senha',
             text: '',
-            html: `<div>
-                <h1>
-                    <a href='http://localhost:3000/recover_password/${userExists._id}'>
-                        Clique aqui para redefinir sua senha!
-                    </ a>
-                </h1>
-            <div>`,
+            html: `
+                <div>
+                    <h1>Prezado nome,</h1>
+                    <p>Foi solicitado a alteração de sua senha.</p>
+                    <br>
+                    <p>Para alterar sua senha atual, clique no link abaixo: </p>
+                    <a href="http://localhost:3000/recover_password/${userExists._id}">Redefinir Minha Senha.</a>
+                    <p>Caso não tenha mandado a esse pedido, simplesmente ignore esse email.</p>
+                    <br>
+                    <h2>Atenciosamente, Orc'estra Gamificação</h2>
+                </div>`,
         }
         
         const mailSent = transporter.sendMail(emailInfo, (error) => {
