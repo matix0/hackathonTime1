@@ -14,6 +14,10 @@ userRoutes.get('/', verifyToken, (req, res) => {
     userController.getAllUsers(req,res);
 });
 
+userRoutes.get('/:userId', (req, res) => {
+    userController.getOneUser(req, res);
+})
+
 userRoutes.post('/login', (req, res) => {
     userController.loginUser(req, res);
 })

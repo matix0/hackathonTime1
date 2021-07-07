@@ -41,6 +41,18 @@ const postUserLogin = async (values: any) => {
     }
 }
 
-export {getUser, postUser, postUserLogin};
+const getUserById = async (id: string | undefined) => {
+    try {
+        const response = await axios.request({
+            url: `${baseUrl}/user/${id}`,
+            method: 'get',
+        })
+        return response
+    } catch (error) {
+        console.error(`Falha na requisição: ${error}`);
+    }
+}
+
+export {getUser, postUser, postUserLogin, getUserById};
 
 
