@@ -71,7 +71,7 @@ function LoginPage() {
                     <button type="button" onClick={handleLogin}>Entrar</button>
 
                     <div className="link-content">
-                        <Link to="/login">Esqueci minha senha</Link>
+                        <Link to="/password">Esqueci minha senha</Link>
                         <br />
                         <Link  to="/register">Preciso criar uma conta</Link>
                     </div>
