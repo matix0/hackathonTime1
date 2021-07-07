@@ -53,6 +53,21 @@ const getUserById = async (id: string | undefined) => {
     }
 }
 
-export {getUser, postUser, postUserLogin, getUserById};
+const changeUserById = async (id: string | undefined, values: any) => {
+    try {
+        const response = await axios.request({
+            url: `${baseUrl}/password/${id}`,
+            method: 'put',
+            data: values
+        })
+        return response
+    } 
+    catch (error) {
+        console.log(error.response)
+        throw new Error(error.response.data.message)
+    }
+}
+
+export {getUser, postUser, postUserLogin, getUserById, changeUserById};
 
 

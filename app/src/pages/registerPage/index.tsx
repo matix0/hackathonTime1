@@ -5,6 +5,7 @@ import {Link, useHistory} from 'react-router-dom'
 
 import orcSom from '../../assets/orcsom2.png'
 import './style.css'
+
 export interface ErrorProps{
     name?: string,
     username?: string,
@@ -99,7 +100,6 @@ export function RegisterPage(){
         } else {
             setErrors(errors);
         }
-
 
         return errors;
     }

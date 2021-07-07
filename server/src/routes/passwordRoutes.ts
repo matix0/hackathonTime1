@@ -12,4 +12,8 @@ passwordRoutes.get('/', (req , res) => {
 passwordRoutes.post('/', (req, res) => {
     passwordController.sendEmail(req, res)
 })
+
+passwordRoutes.put('/:userId', (req, res) => {
+    passwordController.changePassword(req, res)
+})
 export default passwordRoutes;

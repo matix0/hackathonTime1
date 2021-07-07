@@ -1,6 +1,7 @@
 import User from '../models/userSchema'
 import {Request, Response} from 'express'
 import transporter from '../config/smtp'
+import * as bcrypt from 'bcryptjs'
 
 
 export default class PasswordController{
@@ -46,10 +47,15 @@ export default class PasswordController{
     }
 
     changePassword = async(req: Request, res: Response) => {
+        const {password} = req.body
+        const {userId} = req.params
         try {
-            
+            const userExists = await User.findById(userId);
+            const hashedPassword = bcrypt.hashSync(password, 10);
+            await userExists.updateOne({password: hashedPassword})
+            return res.status(200).json({message: "Senha redefina com sucesso"})
         } catch (error) {
-            return res.status(200).json({message: "Erro em redefinir senha"})
+            return res.status(400).json({message: "Erro ao redefinir senha"})   
         }
     }
 }
