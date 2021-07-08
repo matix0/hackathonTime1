@@ -1,23 +1,23 @@
 import React, {useEffect, useState} from "react";
 import PostBox from "../../components/posts";
-import feedService from '../../services/feed';
 import {useHistory} from 'react-router-dom'
 import { getUserById } from '../../services/users'
 import { ThemeProvider } from 'styled-components';
 import {lightTheme, darkTheme, GlobalStyle} from '../../components/themes'
 import { LateralBar, InputBox, InputField, PostBoxStyle } from "./styled";
 import Switch from "react-switch";
-
+import {feedPost, getFeed} from "../../services/feed";
+import InputFeed from "../../components/inputFeed";
 import logOut from "../../assets/log-out.svg";
 import home from "../../assets/home.svg";
 import userProfile from "../../assets/user_profile_temp.svg";
 import "./style.css";
 
-interface IFeed{
-  text: string,
-  userId: { username: string},
-  creationDate: string,
-  _id: string
+interface IFeed {
+  text: string;
+  userId: { username: string };
+  creationDate: string;
+  _id: string;
 }
 
 const MainPage = () => {
@@ -26,9 +26,14 @@ const MainPage = () => {
 
   const [name,setName] = useState<string>()
   const [username,setUserName] = useState<string>()
-  const [feed,setFeed] = useState<IFeed[]>([{
-    text:"",userId:{username:""},creationDate:"",_id:""
-  }]);
+  const [feed, setFeed] = useState<IFeed[]>([
+    {
+      text: "",
+      userId: { username: "" },
+      creationDate: "",
+      _id: "",
+    },
+  ]);
 
   const changeName = async () =>{
     const response = await getUserById(id as string)
@@ -39,11 +44,11 @@ const MainPage = () => {
     setUserName(username)
   }
 
-  
-  const getFeed = async()=>  {
-    const response = await feedService();
-    setFeed(response.data.feed);
+  const getFeedData = async () => {
+    const response = await getFeed();
+    setFeed(response.feed);
   };
+
 
   const handleLogin = async() => {
     localStorage.clear();
@@ -67,7 +72,7 @@ const MainPage = () => {
 
 
   useEffect (() => { 
-    getFeed();
+    getFeedData();
     changeName();
     try {
       localStorage.getItem('theme')  
@@ -110,23 +115,19 @@ const MainPage = () => {
               </div>
             </div>
           </LateralBar>
-
-            <div>
-            <PostBoxStyle>
-              <InputBox>
-                <div className="inputUsernameBox">{name}</div>
-                <InputField maxLength={232} rows={4} placeholder="Escreva aqui..."></InputField>
-                <button className="sendBtn" onClick={(e)=> {changeName()
-                }}>POSTAR</button>
-              </InputBox>
+          
+            <div className="postBox">
+              <InputFeed />
               <div className="scrollBox">
-                {feed.length !== 0 && feed.map(feedPost =>(
-                    <PostBox username={feedPost.userId.username} text={feedPost.text}/>
-                  ))
-                }
+                {feed.length !== 0 &&
+                  feed.map((feedPost) => (
+                    <PostBox
+                      username={feedPost.userId.username}
+                      text={feedPost.text}
+                    />
+                  ))}
               </div>
-            </PostBoxStyle>
-        </div>
+            </div>
       </ThemeProvider>
     </div>
   );
