@@ -31,7 +31,7 @@ export default class PasswordController{
             text: '',
             html: `
                 <div>
-                    <h1>Prezado nome,</h1>
+                    <h1>Prezado ${userExists.name},</h1>
                     <p>Foi solicitado a alteração de sua senha.</p>
                     <br>
                     <p>Para alterar sua senha atual, clique no link abaixo: </p>

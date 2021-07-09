@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { getUserById } from "../../services/users";
 import { useHistory, useParams } from "react-router-dom";
 import { changeUserById } from '../../services/users'
+import "./style.css"
 
 
 //types
@@ -116,7 +117,7 @@ function RecoveryPage(){
                             />
                             {errors?.confirmPassword && <p className="error-text">{errors.confirmPassword}</p>}
                     </div>
-                    <button onClick={handleChangePassword}>Redefinir Senha!</button>
+                    <button onClick={handleChangePassword} className="submit-button">Redefinir Senha!</button>
             </RegisterBox>
         </div>
     )

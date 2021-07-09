@@ -22,7 +22,6 @@ const postUser = async (values:any) => {
 
         return response;
     } catch (error) {
-        //console.error(`Falha na requisição: ${error}`);
         throw new Error(error.response.data.message);
     }
 }
@@ -78,7 +77,6 @@ const postEmailUser = async (values:any) => {
 
         return response;
     } catch (error) {
-        //console.error(`Falha na requisição: ${error}`);
         throw new Error(error.response.data.message);
     }
 }

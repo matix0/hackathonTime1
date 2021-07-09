@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { RegisterBox } from "../../components/registerBox";
 import orcjump from "../../assets/orcjump.png"
 import { postEmailUser } from '../../services/users';
+import "./style.css"
 
 
 function PasswordPage() {
@@ -18,15 +19,14 @@ function PasswordPage() {
             email: ''
         }
         try {
+            setErrorInfo('')
+            setErrors('')
             if (!email) { 
                 error.email = 'Email é necessário'
-                setErrorInfo('') 
                 return setErrors(error.email)
             }
             setErrors('Checando seu email')
             await postEmailUser(values)
-            setErrors('')
-            setErrorInfo('')
             return setMessage("Email de recuperação de senha foi enviado para seu email")
         } catch (error) {
             setErrors('')
@@ -44,7 +44,7 @@ function PasswordPage() {
                         <h1>Esqueceu a senha?</h1>
                     </div>
                     <div>
-                        <p>Digite seu email para que possamos te ajudar!</p>
+                        <p className="info-text">Digite seu email para que possamos te ajudar!</p>
                     </div>
                     <div className="input-content">
                             <input
