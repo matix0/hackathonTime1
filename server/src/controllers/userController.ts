@@ -37,7 +37,14 @@ export default class UserController {
             res.status(400).json({message: "Falha em listar usuários"})
         }
     }
-
+    getOneUser = async(req: Request, res: Response) => {
+        try {
+            const userExists = await User.findById(req.params.userId);
+            return res.status(200).json(userExists)
+        } catch (error) {
+            return res.status(400).json({message: "Erro ao listar usuário"})   
+        }
+    }
     loginUser = async(req: Request, res: Response) => {
         const {email, password} = req.body
         try {

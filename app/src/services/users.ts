@@ -22,7 +22,6 @@ const postUser = async (values:any) => {
 
         return response;
     } catch (error) {
-        //console.error(`Falha na requisição: ${error}`);
         throw new Error(error.response.data.message);
     }
 }
@@ -41,6 +40,47 @@ const postUserLogin = async (values: any) => {
     }
 }
 
-export {getUser, postUser, postUserLogin};
+const getUserById = async (id: string | undefined) => {
+    try {
+        const response = await axios.request({
+            url: `${baseUrl}/user/${id}`,
+            method: 'get',
+        })
+        return response
+    } catch (error) {
+        console.error(`Falha na requisição: ${error}`);
+    }
+}
+
+const changeUserById = async (id: string | undefined, values: any) => {
+    try {
+        const response = await axios.request({
+            url: `${baseUrl}/password/${id}`,
+            method: 'put',
+            data: values
+        })
+        return response
+    } 
+    catch (error) {
+        console.log(error.response)
+        throw new Error(error.response.data.message)
+    }
+}
+
+const postEmailUser = async (values:any) => {
+    try {
+        const response = await axios.request({
+            url: `${baseUrl}/password`,
+            method: 'post',
+            data: values
+        })
+
+        return response;
+    } catch (error) {
+        throw new Error(error.response.data.message);
+    }
+}
+
+export {getUser, postUser, postUserLogin, getUserById, changeUserById, postEmailUser};
 
 
