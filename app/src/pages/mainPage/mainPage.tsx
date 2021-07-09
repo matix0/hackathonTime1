@@ -115,7 +115,7 @@ const MainPage = () => {
               </div>
             </div>
           </LateralBar>
-          
+
             <div className="postBox">
               <InputFeed />
               <div className="scrollBox">
