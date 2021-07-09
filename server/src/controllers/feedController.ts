@@ -18,9 +18,9 @@ export default class UserController {
       }
       var feed = await Feed.create({
         userId: req.body.userId,
-        text: req.body.text
+        text: req.body.text,
       });
-      
+
       console.log(user);
       return res.status(200).send({ feed });
     } catch (error) {

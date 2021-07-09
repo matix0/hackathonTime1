@@ -4,11 +4,13 @@ import { Router } from 'express';
 import homeRoutes from './homeRoutes';
 import userRoutes from './userRoutes';
 import feedRoutes from './feedRoutes';
+import likeRoutes from './likeRoutes';
 
 const router = Router();
 
 router.use('/', homeRoutes);
 router.use('/user', userRoutes);
 router.use('/feed', feedRoutes);
+router.use('/like', likeRoutes);
  
 export default router;

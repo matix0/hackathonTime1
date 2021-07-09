@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import PostBox from "../../components/posts";
-import {feedPost,getFeed} from "../../services/feed";
+import {/*feedPost,*/getFeed} from "../../services/feed";
 import InputFeed from "../../components/inputFeed";
+//import api from "../../services/api";
 
 import logOut from "../../assets/log-out.svg";
 import home from "../../assets/home.svg";
