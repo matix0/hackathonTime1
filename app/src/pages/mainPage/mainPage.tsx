@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from "react";
 import PostBox from "../../components/posts";
 import feedService from '../../services/feed';
+import {useHistory} from 'react-router-dom'
 
 import logOut from "../../assets/log-out.svg";
 import home from "../../assets/home.svg";
@@ -16,6 +17,8 @@ interface IFeed{
 
 
 const MainPage = () => {
+  const history = useHistory()
+
   const [name,setName] = useState("nome sobrenome sobresobrenome")
   const [feed,setFeed] = useState<IFeed[]>([{
     text:"",userId:{username:""},creationDate:"",_id:""
@@ -38,6 +41,11 @@ const MainPage = () => {
     setFeed(response.data.feed);
   };
 
+  const handleLogin = async() => {
+    localStorage.clear();
+    history.push('/login')
+  }
+
 
   return (
     <div className="container">
@@ -52,10 +60,10 @@ const MainPage = () => {
           <div className="svgBtn">
           <img src={home} alt="home"/>
             <p>Home</p></div>
-          <div className="svgBtn">
+          <div className="svgBtn logout"  onClick={() => {handleLogin()}}>
             <img src={logOut} alt="logout"/>
             <p>Sair</p>
-            </div>
+          </div>
         </div>
       </div>
 
