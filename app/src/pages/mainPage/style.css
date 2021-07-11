@@ -46,7 +46,7 @@
 .optionsBox {
   display: flex;
   align-self: center;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   margin-top: 7vh;
