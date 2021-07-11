@@ -46,7 +46,7 @@ const PostBox = ({ username, text }: PostProps) => {
         src={heartImg}
         alt="heart"
         onClick={(e) => {
-          changeHeartColor(), sendLike();
+          changeHeartColor();
         }}
       />
     </div>

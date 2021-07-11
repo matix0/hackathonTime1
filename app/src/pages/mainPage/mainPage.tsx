@@ -3,9 +3,8 @@ import PostBox from "../../components/posts";
 import {/*feedPost,*/getFeed} from "../../services/feed";
 import InputFeed from "../../components/inputFeed";
 //import api from "../../services/api";
+import LateralBar from "../../components/lateralBar";
 
-import logOut from "../../assets/log-out.svg";
-import home from "../../assets/home.svg";
 import "./style.css";
 
 interface IFeed {
@@ -54,14 +53,7 @@ const MainPage = () => {
           </div>
         </div>
         <div className="optionsBox">
-          <div className="svgBtn">
-            <img src={home} alt="home" />
-            <p>Home</p>
-          </div>
-          <div className="svgBtn">
-            <img src={logOut} alt="logout" />
-            <p>Sair</p>
-          </div>
+          <LateralBar />
         </div>
       </div>
 
