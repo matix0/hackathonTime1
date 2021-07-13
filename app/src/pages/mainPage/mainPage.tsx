@@ -2,6 +2,7 @@ import React,{useEffect,useState} from "react";
 import PostBox from "../../components/posts";
 import feedService from '../../services/feed';
 import {useHistory} from 'react-router-dom'
+import { getUserById } from '../../services/users'
 
 import logOut from "../../assets/log-out.svg";
 import home from "../../assets/home.svg";
@@ -18,15 +19,22 @@ interface IFeed{
 
 const MainPage = () => {
   const history = useHistory()
+  const id = localStorage.getItem('id')
 
-  const [name,setName] = useState("nome sobrenome sobresobrenome")
+  const [name,setName] = useState<string>()
+  const [username,setUserName] = useState<string>()
   const [feed,setFeed] = useState<IFeed[]>([{
     text:"",userId:{username:""},creationDate:"",_id:""
   }]);
 
-  const changeName = () =>{
-    const finalName = name.replaceAll(" ","\n");
+  const changeName = async () =>{
+    const response = await getUserById(id as string)
+    //setName(response?.data.name)
+    let finalName = response?.data.name
+    const username = response?.data.username
+    finalName = finalName?.replaceAll(" ","\n");
     setName(finalName);
+    setUserName(username)
   }
 
   useEffect (() => { 
@@ -52,9 +60,11 @@ const MainPage = () => {
       <div className="lateralBar">
         <div className="infoBox">
           <div className="nameBox">
-            {name}<br/><br/>
-            3132132s1da3sd456
-            </div>
+            {name}
+            <br/>
+            <br />
+            {username}
+          </div>
         </div>
         <div className="optionsBox">
           <div className="svgBtn">
