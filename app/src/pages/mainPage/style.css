@@ -125,7 +125,7 @@
   height: 8vh;
 }
 
-.logout:hover {
+.svgBtn:hover {
   cursor: pointer;
   color: #70e864;
   border: 3px solid #70e864;

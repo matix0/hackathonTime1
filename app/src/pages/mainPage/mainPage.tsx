@@ -6,6 +6,7 @@ import { getUserById } from '../../services/users'
 
 import logOut from "../../assets/log-out.svg";
 import home from "../../assets/home.svg";
+import userProfile from "../../assets/user_profile_temp.svg";
 import "./style.css";
 
 interface IFeed{
@@ -54,6 +55,10 @@ const MainPage = () => {
     history.push('/login')
   }
 
+  const goProfile = async() => {
+    history.push('/profile')
+  }
+
 
   return (
     <div className="container">
@@ -68,8 +73,13 @@ const MainPage = () => {
         </div>
         <div className="optionsBox">
           <div className="svgBtn">
-          <img src={home} alt="home"/>
-            <p>Home</p></div>
+            <img src={home} alt="home"/>
+            <p>Home</p>
+          </div>
+          <div className="svgBtn profile" onClick={() => {goProfile()}}>
+            <img src={userProfile} alt="home"/>
+            <p>Home</p>
+          </div>
           <div className="svgBtn logout"  onClick={() => {handleLogin()}}>
             <img src={logOut} alt="logout"/>
             <p>Sair</p>
