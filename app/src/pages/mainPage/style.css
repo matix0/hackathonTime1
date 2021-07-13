@@ -9,6 +9,7 @@
   flex-direction: column;
   background-color: #f4f4f4;
   border-right-style: solid;
+  border-right-color: #808080;
   height: 100vh;
   width: 20vw;
 }
@@ -125,7 +126,7 @@
   height: 8vh;
 }
 
-.logout:hover {
+.svgBtn:hover {
   cursor: pointer;
   color: #70e864;
   border: 3px solid #70e864;

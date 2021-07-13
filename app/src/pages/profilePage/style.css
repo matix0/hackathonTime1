@@ -1,0 +1,81 @@
+.content {
+    display: flex;
+    background-color: #fff;
+}
+
+.lateralBar {
+    width: 20vw;
+}
+
+.infoBox{
+    display: flex;
+}
+
+.profile-content {
+    width: 80vw;
+    align-self: center;
+}
+
+.profile-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60vw;
+    margin: auto;
+    background-color: #fff;
+}
+
+.header-perfil-content{
+    Text-align: center;
+    height: 50px;
+    width: 100%;
+    margin-bottom: 5vh;
+}
+
+.txt-title{
+    width: 100%;
+}
+
+.txt-title h1{
+    width: 100%;
+    font-size: 37px;
+    font-weight: 300;
+    font-family: Roboto, sans-serif;
+}
+
+.see-info-content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-style: solid;
+    border-color: #70e864;
+    border-radius: 25px;
+    transition: 0.8s;
+}
+
+.see-info-content:hover{
+    box-shadow: inset -1px 0.8px 2px 1px #70e864;
+}
+
+.informations{
+    margin-bottom: 20px;
+}
+
+.informations h3{
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: Roboto, sans-serif;
+}
+.informations p{
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-family: Roboto, sans-serif;
+    font-weight: 300;
+    transition: 0.8s;
+}
+.informations p:hover{
+    cursor: pointer;
+    border-bottom: 1px solid #70e864;
+}
