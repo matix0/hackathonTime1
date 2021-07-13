@@ -60,7 +60,7 @@ function ProfilePage() {
                       </div>
                       <div className="svgBtn profile">
                         <img src={userProfile} alt="home"/>
-                        <p>Home</p>
+                        <p>Perfil</p>
                       </div>
                       <div className="svgBtn logout"  onClick={() => {handleLogout()}}>
                         <img src={logOut} alt="logout"/>
@@ -71,10 +71,12 @@ function ProfilePage() {
             <div className="profile-content">
                 <div className="profile-box">
                     <div className="title-content">
-                        <h1>Informações do usuário {username}</h1>
-                    </div>
-                    <div className="orcjump">
-                        <img src={orcjump} alt="Orc saltando" />
+                        <div className="orcjump">
+                            {/* <img src={orcjump} alt="Orc saltando" /> */}
+                        </div>
+                        <div className="txt-titles">
+                            <h1>Informações do Perfil</h1>
+                        </div>
                     </div>
                     <form>
                         <div className="input-content">

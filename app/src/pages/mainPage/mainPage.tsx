@@ -77,7 +77,7 @@ const MainPage = () => {
           </div>
           <div className="svgBtn profile" onClick={() => {goProfile()}}>
             <img src={userProfile} alt="home"/>
-            <p>Home</p>
+            <p>Perfil</p>
           </div>
           <div className="svgBtn logout"  onClick={() => {handleLogin()}}>
             <img src={logOut} alt="logout"/>

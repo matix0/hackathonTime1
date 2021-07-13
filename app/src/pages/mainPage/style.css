@@ -9,6 +9,7 @@
   flex-direction: column;
   background-color: #f4f4f4;
   border-right-style: solid;
+  border-right-color: #808080;
   height: 100vh;
   width: 20vw;
 }
