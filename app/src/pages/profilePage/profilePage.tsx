@@ -1,4 +1,4 @@
-import orcjump from "../../assets/orcjump.png";
+// import orcjump from "../../assets/orcjump.png";
 import {useEffect,useState} from "react";
 import {useHistory} from 'react-router-dom'
 import { getUserById } from "../../services/users";
@@ -72,41 +72,28 @@ function ProfilePage() {
                     </div>
                 </div>
             </div>
+
             <div className="profile-content">
                 <div className="profile-box">
-                    <div className="title-content">
-                        <div className="orcjump">
-                            {/* <img src={orcjump} alt="Orc saltando" /> */}
-                        </div>
-                        <div className="txt-titles">
+                    <div className="header-perfil-content">
+                        <div className="txt-title">
                             <h1>Informações do Perfil</h1>
                         </div>
                     </div>
-                    <form>
-                        <div className="input-content">
-                            <label htmlFor="name">Nome</label>
-                            <input
-                                type="text"
-                                id="name"
-                                value={nameInfo}
-                                disabled
-                            />
-                            <label htmlFor="username">Username</label>
-                            <input
-                                type="text"
-                                id="username"
-                                value={username}
-                                disabled
-                            />
-                            <label htmlFor="email">Email</label>
-                            <input
-                                type="email"
-                                id="email"
-                                value={email}
-                                disabled
-                            />
+                    <div className="see-info-content">
+                        <div className="informations">
+                            <h3>Nome</h3>
+                            <p>{nameInfo}</p>
                         </div>
-                    </form>
+                        <div className="informations">
+                            <h3>Username</h3>
+                            <p>{username}</p>
+                        </div>
+                        <div className="informations">
+                            <h3>Email</h3>
+                            <p>{email}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
