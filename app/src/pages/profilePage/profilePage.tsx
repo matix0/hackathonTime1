@@ -18,13 +18,17 @@ function ProfilePage() {
     const [email,setEmail] = useState<string>()
 
 
+    const separateString = (value: string) => {
+        value = value.replaceAll(" ", "\n")
+        return value
+    }
+
     const handleProfileInfo = async () => {
         const response = await getUserById(id as string)
-        let finalName = response?.data.name
+        const finalName = response?.data.name
         setNameInfo(finalName)
         setEmail(response?.data.email)
-        finalName = finalName?.replaceAll(" ","\n");
-        setName(finalName);
+        setName(separateString(finalName));
         setUserName(response?.data.username)
     }
 
