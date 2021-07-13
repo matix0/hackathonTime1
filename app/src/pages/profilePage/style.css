@@ -1,0 +1,21 @@
+.content {
+    display: flex;
+}
+
+.lateralBar {
+    width: 20vw;
+}
+
+.profile-content {
+    width: 80vw;
+    align-self: center;
+}
+
+.profile-box {
+    width: 60vw;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 3px 2px #5a8d3b;
+    text-align: center;
+    margin: auto;
+}

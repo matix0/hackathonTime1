@@ -30,7 +30,6 @@ const MainPage = () => {
 
   const changeName = async () =>{
     const response = await getUserById(id as string)
-    //setName(response?.data.name)
     let finalName = response?.data.name
     const username = response?.data.username
     finalName = finalName?.replaceAll(" ","\n");
