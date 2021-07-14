@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PostBox from "../../components/posts";
-import {feedPost,getFeed} from "../../services/feed";
+import { getFeed } from "../../services/feed";
 import InputFeed from "../../components/inputFeed";
 //import api from "../../services/api";
 import LateralBar from "../../components/lateralBar";
@@ -12,19 +12,33 @@ interface IFeed {
   userId: { username: string };
   creationDate: string;
   _id: string;
+  liked: boolean;
+}
+interface ILikes {
+  userId: string;
+  postId: string;
+  _id: string;
 }
 
 const MainPage = () => {
   const [name, setName] = useState("nome sobrenome sobresobrenome");
+  const [id] = useState(localStorage.getItem("id"));
   const [feed, setFeed] = useState<IFeed[]>([
     {
       text: "",
       userId: { username: "" },
       creationDate: "",
       _id: "",
+      liked: false,
     },
   ]);
-
+  const [likes, setLikes] = useState<ILikes[]>([
+    {
+      userId: "",
+      postId: "",
+      _id: "",
+    },
+  ]);
   const changeName = () => {
     const finalName = name.replaceAll(" ", "\n");
     setName(finalName);
@@ -36,9 +50,28 @@ const MainPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const loadLikePosts = (feedList:any, likeList:any ) => {
+    const likedFeed = feedList.filter((element: any) => {
+       const temp =likeList.map((likeElement:any)=>{
+        if(likeElement.postId === element._id){
+           element.liked = true;
+          }
+          return element; 
+      })
+      return temp
+    });
+    setFeed(likedFeed);
+  };
+
   const getFeedData = async () => {
     const response = await getFeed();
-    setFeed(response.feed);
+    const userLikes = response.likes.filter((like: any) => {
+      if (like.userId === id) {
+        return like;
+      }
+    });
+    setLikes(userLikes);
+    loadLikePosts(response.feed,userLikes);
   };
 
   return (
@@ -67,6 +100,7 @@ const MainPage = () => {
                   username={feedPost.userId.username}
                   text={feedPost.text}
                   postId={feedPost._id}
+                  liked={feedPost.liked}
                 />
               ))}
           </div>

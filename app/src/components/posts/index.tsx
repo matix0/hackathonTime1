@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { postLike } from "../../services/like";
 
 import heart from "../../assets/heart.svg";
@@ -9,10 +9,21 @@ interface PostProps {
   username: string;
   text: string;
   postId: string;
+  liked?:boolean;
 }
 
-const PostBox = ({ username, text, postId }: PostProps) => {
+const PostBox = ({ username, text, postId, liked }: PostProps) => {
   const [userId] = useState(localStorage.getItem("id"));
+  const [heartImg, setHeart] = useState(heart);
+
+  useEffect(() => {
+    console.log(liked);
+    
+    if(liked && liked === true){
+      setHeart(fullHeart)
+    }
+  })
+
   const sendLike = async () => {
     if (postId?.length !== 0 && userId?.length !== 0) {
       const response: any = await sendLike();
@@ -21,18 +32,19 @@ const PostBox = ({ username, text, postId }: PostProps) => {
       return false;
     }
   };
-  const [heartImg, setHeart] = useState(heart);
 
   const changeHeartColor = async () => {
-    heartImg === heart ? setHeart(fullHeart) : setHeart(heart);
-    const values = {
-      userId,
-      postId,
-    };
-    try {
-      await postLike(values);
-    } catch (error) {
-      console.log(error.message);
+    if (heartImg === heart) {
+      setHeart(fullHeart);
+      const values = {
+        userId,
+        postId,
+      };
+      try {
+        await postLike(values);
+      } catch (error) {
+        console.log(error.message);
+      }
     }
   };
 

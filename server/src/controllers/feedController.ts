@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import Feed from "../models/feedSchema";
 import User from "../models/userSchema";
+import LikeController from "./likeController";
 
 export default class UserController {
   createFeed = async (req: Request, res: Response) => {
@@ -42,9 +43,10 @@ export default class UserController {
       var feed = await Feed.find({})
         .populate("userId", "username")
         .sort({ creationDate: -1 });
-      return res.status(200).send({ feed });
+        var likes = await LikeController.getAllLikes();
+        return res.status(200).send({ feed,likes });
     } catch (error) {
-      return res.status(400).json({ message: "Falha em criar Feed" });
+      return res.status(400).json( error );
     }
   };
 }
