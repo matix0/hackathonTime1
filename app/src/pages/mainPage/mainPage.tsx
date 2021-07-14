@@ -18,6 +18,12 @@ interface IFeed {
   userId: { username: string };
   creationDate: string;
   _id: string;
+  liked: boolean;
+}
+interface ILikes {
+  userId: string;
+  postId: string;
+  _id: string;
 }
 
 const MainPage = () => {
@@ -32,6 +38,14 @@ const MainPage = () => {
       userId: { username: "" },
       creationDate: "",
       _id: "",
+      liked: false,
+    },
+  ]);
+  const [likes, setLikes] = useState<ILikes[]>([
+    {
+      userId: "",
+      postId: "",
+      _id: "",
     },
   ]);
 
@@ -42,11 +56,6 @@ const MainPage = () => {
     finalName = finalName?.replaceAll(" ", "\n");
     setName(finalName);
     setUserName(username);
-  };
-
-  const getFeedData = async () => {
-    const response = await getFeed();
-    setFeed(response.feed);
   };
 
   const handleLogin = async () => {
@@ -77,6 +86,30 @@ const MainPage = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const loadLikePosts = (feedList: any, likeList: any) => {
+    const likedFeed = feedList.filter((element: any) => {
+      const temp = likeList.map((likeElement: any) => {
+        if (likeElement.postId === element._id) {
+          element.liked = true;
+        }
+        return element;
+      });
+      return temp;
+    });
+    setFeed(likedFeed);
+  };
+
+  const getFeedData = async () => {
+    const response = await getFeed();
+    const userLikes = response.likes.filter((like: any) => {
+      if (like.userId === id) {
+        return like;
+      }
+    });
+    setLikes(userLikes);
+    loadLikePosts(response.feed, userLikes);
+  };
 
   return (
     <div className="container">
@@ -134,6 +167,7 @@ const MainPage = () => {
                     username={feedPost.userId.username}
                     text={feedPost.text}
                     postId={feedPost._id}
+                    liked={feedPost.liked}
                   />
                 ))}
             </div>
