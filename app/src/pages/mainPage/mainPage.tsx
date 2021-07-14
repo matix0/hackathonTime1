@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PostBox from "../../components/posts";
-import {/*feedPost,*/getFeed} from "../../services/feed";
+import {feedPost,getFeed} from "../../services/feed";
 import InputFeed from "../../components/inputFeed";
 //import api from "../../services/api";
 import LateralBar from "../../components/lateralBar";
@@ -66,6 +66,7 @@ const MainPage = () => {
                 <PostBox
                   username={feedPost.userId.username}
                   text={feedPost.text}
+                  postId={feedPost._id}
                 />
               ))}
           </div>
