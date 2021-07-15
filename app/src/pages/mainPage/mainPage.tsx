@@ -4,7 +4,7 @@ import feedService from '../../services/feed';
 import {useHistory} from 'react-router-dom'
 import { getUserById } from '../../services/users'
 import { ThemeProvider } from 'styled-components';
-import {lightTheme, darkTheme} from '../../components/themes'
+import {lightTheme, darkTheme, GlobalStyle} from '../../components/themes'
 
 import logOut from "../../assets/log-out.svg";
 import home from "../../assets/home.svg";
@@ -53,12 +53,13 @@ const MainPage = () => {
     history.push('/profile')
   }
 
-  const [theme, setTheme] = useState(lightTheme);
+  const [theme, setTheme] = useState('light');
   const [isDark, setIsDark] = useState(false);
 
   const changeTheme = () => {
     setIsDark(!isDark);
-    setTheme(isDark ? darkTheme : lightTheme);
+    setTheme(isDark ? 'dark' : 'light');
+    console.log(theme)
   };
 
 
@@ -70,7 +71,8 @@ const MainPage = () => {
 
   return (
     <div className="container">
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+        <GlobalStyle />
         <div className="lateralBar">
           <div className="infoBox">
             <div className="nameBox">
