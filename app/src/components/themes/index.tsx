@@ -2,27 +2,37 @@ import {createGlobalStyle} from 'styled-components'
 
 declare module 'styled-components' {
     export interface DefaultTheme {
-        body: string,
-        color: string,
+        title: string,
+        colors: {
+            primary: string,
+            background: string,
+            text: string
+        },
     }
   }
 
 export const lightTheme = {
-    body: '#fff',
-    color: 'black',
-    pageBackground: 'green'
+    title: 'light',
+    colors: {
+        primary: 'white',
+        background: 'white',
+        text: 'black'
+    },
 }
 
 export const darkTheme = {
-    body: '#000',
-    color: 'green',
-    pageBackground: '#000'
+    title: 'dark',
+    colors: {
+        primary: 'black',
+        background: 'black',
+        text: 'green'
+    },
 }
 
 
 export const GlobalStyle = createGlobalStyle`
     body {
-        background-color: ${props => props.theme.body};
-        color: ${props => props.theme.color}
+        background-color: ${props => props.theme.colors.background};
+        color: ${props => props.theme.colors.text}
     }
 `

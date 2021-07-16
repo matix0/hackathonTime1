@@ -5,6 +5,7 @@ import {useHistory} from 'react-router-dom'
 import { getUserById } from '../../services/users'
 import { ThemeProvider } from 'styled-components';
 import {lightTheme, darkTheme, GlobalStyle} from '../../components/themes'
+import { LateralBar, InputBox, InputField, PostBoxStyle } from "./styled";
 
 import logOut from "../../assets/log-out.svg";
 import home from "../../assets/home.svg";
@@ -17,7 +18,6 @@ interface IFeed{
   creationDate: string,
   _id: string
 }
-
 
 const MainPage = () => {
   const history = useHistory()
@@ -73,7 +73,7 @@ const MainPage = () => {
     <div className="container">
       <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
         <GlobalStyle />
-        <div className="lateralBar">
+        <LateralBar >
           <div className="infoBox">
             <div className="nameBox">
               {name}
@@ -99,26 +99,23 @@ const MainPage = () => {
               <p>Sair</p>
             </div>
           </div>
-        </div>
+        </LateralBar>
 
-        <div >
-          <div className="postBox">
-            <div className="inputBox">
+        <div>
+          <PostBoxStyle>
+            <InputBox>
               <div className="inputUsernameBox">{name}</div>
-              <textarea maxLength={232} rows={4} 
-                className="inputField"
-                placeholder="Escreva aqui.."
-              ></textarea>
+              <InputField maxLength={232} rows={4} placeholder="Escreva aqui..."></InputField>
               <button className="sendBtn" onClick={(e)=> {changeName()
               }}>POSTAR</button>
-            </div>
+            </InputBox>
             <div className="scrollBox">
-            {feed.length !== 0 && feed.map(feedPost =>(
-                <PostBox username={feedPost.userId.username} text={feedPost.text}/>
-            ))
-          }
-          </div>
-          </div>
+              {feed.length !== 0 && feed.map(feedPost =>(
+                  <PostBox username={feedPost.userId.username} text={feedPost.text}/>
+                ))
+              }
+            </div>
+          </PostBoxStyle>
         </div>
       </ThemeProvider>
     </div>

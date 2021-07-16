@@ -1,5 +1,6 @@
 import {useState} from "react";
 
+import { FeedBox } from "./styled";
 import heart from "../../assets/heart.svg";
 import fullHeart from "../../assets/fullHeart.svg";
 import "./style.css";
@@ -18,11 +19,11 @@ const PostBox = ({username, text}: PostProps) => {
       };
 
     return(
-        <div className="feedBox">
+        <FeedBox>
             <div className="feedUsernameBox">{username}</div>
             <div className="feedTextBox">{text}</div>
             <img id="likeBtn" src={heartImg} alt="heart" onClick={(e)=> {changeHeartColor()}}/>
-        </div>
+        </FeedBox>
     );
 };
 
