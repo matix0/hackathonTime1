@@ -24,8 +24,8 @@ export const darkTheme = {
     title: 'dark',
     colors: {
         primary: 'black',
-        background: 'black',
-        text: 'green'
+        background: '#212529',
+        text: '#6bbf59'
     },
 }
 

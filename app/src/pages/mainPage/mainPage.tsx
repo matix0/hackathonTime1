@@ -6,6 +6,7 @@ import { getUserById } from '../../services/users'
 import { ThemeProvider } from 'styled-components';
 import {lightTheme, darkTheme, GlobalStyle} from '../../components/themes'
 import { LateralBar, InputBox, InputField, PostBoxStyle } from "./styled";
+import Switch from "react-switch";
 
 import logOut from "../../assets/log-out.svg";
 import home from "../../assets/home.svg";
@@ -53,8 +54,9 @@ const MainPage = () => {
     history.push('/profile')
   }
 
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState('light');
   const [isDark, setIsDark] = useState(false);
+  localStorage.setItem('theme', theme);
 
   const changeTheme = () => {
     setIsDark(!isDark);
@@ -72,50 +74,52 @@ const MainPage = () => {
     <div className="container">
       <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
         <GlobalStyle />
-        <LateralBar >
-          <div className="infoBox">
-            <div className="nameBox">
-              {name}
-              <br/>
-              <br />
-              {username}
+          <LateralBar >
+            <div className="infoBox">
+              <div className="nameBox">
+                {name}
+                <br/>
+                <br />
+                {username}
+              </div>
             </div>
-          </div>
-          <div className="optionsBox">
-            <div className="svgBtn">
-              <img src={home} alt="home"/>
-              <p>Home</p>
+            <div className="optionsBox">
+              <Switch 
+                className="switch"
+                onChange={() => {changeTheme()}} 
+                checked={theme==='dark'} 
+                uncheckedIcon
+              />
+              <div className="svgBtn">
+                <img src={home} alt="home"/>
+                <p>Home</p>
+              </div>
+              <div className="svgBtn profile" onClick={() => {goProfile()}}>
+                <img src={userProfile} alt="home"/>
+                <p>Perfil</p>
+              </div>
+              <div className="svgBtn logout"  onClick={() => {handleLogin()}}>
+                <img src={logOut} alt="logout"/>
+                <p>Sair</p>
+              </div>
             </div>
-            <div className="svgBtn profile" onClick={() => {goProfile()}}>
-              <img src={userProfile} alt="home"/>
-              <p>Perfil</p>
-            </div>
-            <div className="svgBtn" onClick={() => {changeTheme()}}>
-              <img src={userProfile} alt="sol"/>
-              <p>Change Theme</p>
-            </div>
-            <div className="svgBtn logout"  onClick={() => {handleLogin()}}>
-              <img src={logOut} alt="logout"/>
-              <p>Sair</p>
-            </div>
-          </div>
-        </LateralBar>
+          </LateralBar>
 
-        <div>
-          <PostBoxStyle>
-            <InputBox>
-              <div className="inputUsernameBox">{name}</div>
-              <InputField maxLength={232} rows={4} placeholder="Escreva aqui..."></InputField>
-              <button className="sendBtn" onClick={(e)=> {changeName()
-              }}>POSTAR</button>
-            </InputBox>
-            <div className="scrollBox">
-              {feed.length !== 0 && feed.map(feedPost =>(
-                  <PostBox username={feedPost.userId.username} text={feedPost.text}/>
-                ))
-              }
-            </div>
-          </PostBoxStyle>
+            <div>
+            <PostBoxStyle>
+              <InputBox>
+                <div className="inputUsernameBox">{name}</div>
+                <InputField maxLength={232} rows={4} placeholder="Escreva aqui..."></InputField>
+                <button className="sendBtn" onClick={(e)=> {changeName()
+                }}>POSTAR</button>
+              </InputBox>
+              <div className="scrollBox">
+                {feed.length !== 0 && feed.map(feedPost =>(
+                    <PostBox username={feedPost.userId.username} text={feedPost.text}/>
+                  ))
+                }
+              </div>
+            </PostBoxStyle>
         </div>
       </ThemeProvider>
     </div>

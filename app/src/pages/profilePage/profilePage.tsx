@@ -5,11 +5,13 @@ import { getUserById } from "../../services/users";
 import { ThemeProvider } from 'styled-components';
 import {lightTheme, darkTheme, GlobalStyle} from '../../components/themes'
 import { Content, ProfileBox } from "./styled";
+import Switch from "react-switch";
 
 import "./style.css"
 import logOut from "../../assets/log-out.svg";
 import home from "../../assets/home.svg";
 import userProfile from "../../assets/user_profile_temp.svg";
+import { LateralBar } from "../mainPage/styled";
 
 function ProfilePage() {
     const history = useHistory()
@@ -57,38 +59,44 @@ function ProfilePage() {
       // eslint-disable-next-line react-hooks/exhaustive-deps
       },[]);
 
+
+
+
     return (
         <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
         <GlobalStyle />
             <Content>
-                <div className="lateralBar">
+                <LateralBar >
                     <div className="infoBox">
                         <div className="nameBox">
-                            {name}
-                            <br/>
-                            <br />
-                            {username}
-                          </div>
+                        {name}
+                        <br/>
+                        <br />
+                        {username}
                         </div>
-                        <div className="optionsBox">
-                          <div className="svgBtn" onClick={() => {goHome()}}>
+                    </div>
+                    <div className="optionsBox">
+                        <div className="svgBtn">
+                            <Switch 
+                                onChange={() => {changeTheme()}} 
+                                checked={theme==='dark'}
+                                uncheckedIcon
+                            />
+                        </div>
+                        <div className="svgBtn" onClick={() => {goHome()}}>
                             <img src={home} alt="home"/>
                             <p>Home</p>
-                          </div>
-                          <div className="svgBtn profile">
+                        </div>
+                        <div className="svgBtn profile">
                             <img src={userProfile} alt="home"/>
                             <p>Perfil</p>
-                          </div>
-                          <div className="svgBtn" onClick={() => {changeTheme()}}>
-                            <img src={userProfile} alt="sol"/>
-                            <p>Change Theme</p>
-                          </div>
-                          <div className="svgBtn logout"  onClick={() => {handleLogout()}}>
+                        </div>
+                        <div className="svgBtn logout" onClick={() => {handleLogout()}}>
                             <img src={logOut} alt="logout"/>
                             <p>Sair</p>
                         </div>
                     </div>
-                </div>
+                </LateralBar>
 
                 <div className="profile-content">
                     <ProfileBox>
