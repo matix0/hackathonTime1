@@ -59,7 +59,6 @@ const MainPage = () => {
   const changeTheme = () => {
     setIsDark(!isDark);
     setTheme(isDark ? 'dark' : 'light');
-    console.log(theme)
   };
 
 
@@ -91,8 +90,9 @@ const MainPage = () => {
               <img src={userProfile} alt="home"/>
               <p>Perfil</p>
             </div>
-            <div>
-              <button type="button" onClick={changeTheme}>Mudar saporha</button>
+            <div className="svgBtn" onClick={() => {changeTheme()}}>
+              <img src={userProfile} alt="sol"/>
+              <p>Change Theme</p>
             </div>
             <div className="svgBtn logout"  onClick={() => {handleLogin()}}>
               <img src={logOut} alt="logout"/>
