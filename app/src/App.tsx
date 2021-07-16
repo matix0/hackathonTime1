@@ -6,7 +6,6 @@ import LoginPage from './pages/loginPage/loginPage';
 import PasswordPage from './pages/passwordPage/passwordPage';
 import RecoveryPage from './pages/recoveryPage';
 import ProfilePage from './pages/profilePage/profilePage';
-import TestePage from './pages/testPage/index';
 
 function App() {
   const ProtectedRoute = ({...routesProps}: RouteProps) => {
@@ -27,7 +26,6 @@ function App() {
         <ProtectedRoute path="/profile" exact component={ProfilePage}/>
         <Route path="/password" exact component={PasswordPage}/>
         <Route path="/recover_password/:id" exact component={RecoveryPage}/>
-        <Route path="/teste" exact component={TestePage}/>
       </Switch>
     </BrowserRouter>
   );

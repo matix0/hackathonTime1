@@ -3,19 +3,22 @@ import {createGlobalStyle} from 'styled-components'
 declare module 'styled-components' {
     export interface DefaultTheme {
         body: string,
-        color: string
+        color: string,
     }
   }
 
 export const lightTheme = {
     body: '#fff',
-    color: 'black'
+    color: 'black',
+    pageBackground: 'green'
 }
 
 export const darkTheme = {
     body: '#000',
-    color: 'white'
+    color: 'green',
+    pageBackground: '#000'
 }
+
 
 export const GlobalStyle = createGlobalStyle`
     body {

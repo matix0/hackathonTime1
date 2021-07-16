@@ -53,7 +53,7 @@ const MainPage = () => {
     history.push('/profile')
   }
 
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
   const [isDark, setIsDark] = useState(false);
 
   const changeTheme = () => {
