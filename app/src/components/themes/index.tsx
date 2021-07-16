@@ -15,7 +15,7 @@ export const lightTheme = {
     title: 'light',
     colors: {
         primary: 'white',
-        background: 'white',
+        background: '#e9e3e6',
         text: 'black'
     },
 }
