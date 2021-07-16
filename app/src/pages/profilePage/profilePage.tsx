@@ -48,7 +48,7 @@ function ProfilePage() {
 
     const [theme, setTheme] = useState('light');
     const [isDark, setIsDark] = useState(false);
-    localStorage.getItem('theme');
+    localStorage.setItem('theme', theme);
 
     const changeTheme = () => {
       setIsDark(!isDark);

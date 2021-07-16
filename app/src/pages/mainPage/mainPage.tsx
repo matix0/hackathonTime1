@@ -56,6 +56,7 @@ const MainPage = () => {
 
   const [theme, setTheme] = useState('light');
   const [isDark, setIsDark] = useState(false);
+  localStorage.setItem('theme', theme);
 
   const changeTheme = () => {
     
