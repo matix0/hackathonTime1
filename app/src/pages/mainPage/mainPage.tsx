@@ -56,17 +56,19 @@ const MainPage = () => {
 
   const [theme, setTheme] = useState('light');
   const [isDark, setIsDark] = useState(false);
-  localStorage.setItem('theme', theme);
 
   const changeTheme = () => {
+    
     setIsDark(!isDark);
     setTheme(isDark ? 'dark' : 'light');
+    
   };
 
 
   useEffect (() => { 
     getFeed();
     changeName();
+    localStorage.getItem('theme')
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
@@ -79,7 +81,6 @@ const MainPage = () => {
               <div className="nameBox">
                 {name}
                 <br/>
-                <br />
                 {username}
               </div>
             </div>

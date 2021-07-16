@@ -46,8 +46,9 @@ function ProfilePage() {
         history.push('/login')
     }
 
-    const [theme, setTheme] = useState('dark');
+    const [theme, setTheme] = useState('light');
     const [isDark, setIsDark] = useState(false);
+    localStorage.getItem('theme');
 
     const changeTheme = () => {
       setIsDark(!isDark);
@@ -71,7 +72,6 @@ function ProfilePage() {
                         <div className="nameBox">
                         {name}
                         <br/>
-                        <br />
                         {username}
                         </div>
                     </div>
