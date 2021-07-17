@@ -1,4 +1,4 @@
-.feedBox {
+/* .feedBox {
     display: flex;
     margin-left: 0.5vw;
     background-color: aqua;
@@ -13,7 +13,7 @@
     border-color: #70e864;
     border-radius: 25px;
     box-shadow: 4px 3px 4px rgba(0, 0, 0, 0.25);
-}
+} */
 
 .feedUsernameBox {
     display: flex;
