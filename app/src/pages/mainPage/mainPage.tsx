@@ -54,9 +54,9 @@ const MainPage = () => {
     history.push('/profile')
   }
 
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(localStorage.getItem('theme'));
   const [isDark, setIsDark] = useState(false);
-  localStorage.setItem('theme', theme);
+  localStorage.setItem('theme', theme!);
 
   const changeTheme = () => {
     
@@ -69,7 +69,11 @@ const MainPage = () => {
   useEffect (() => { 
     getFeed();
     changeName();
-    localStorage.getItem('theme')
+    try {
+      localStorage.getItem('theme')  
+    } catch (error) {
+      localStorage.setItem('theme', 'light')
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
