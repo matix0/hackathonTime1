@@ -9,7 +9,7 @@ interface PostProps {
   username: string;
   text: string;
   postId: string;
-  liked?:boolean;
+  liked?: boolean;
 }
 
 const PostBox = ({ username, text, postId, liked }: PostProps) => {
@@ -17,12 +17,10 @@ const PostBox = ({ username, text, postId, liked }: PostProps) => {
   const [heartImg, setHeart] = useState(heart);
 
   useEffect(() => {
-    console.log(liked);
-    
-    if(liked && liked === true){
-      setHeart(fullHeart)
+    if (liked && liked === true) {
+      setHeart(fullHeart);
     }
-  })
+  });
 
   const sendLike = async () => {
     if (postId?.length !== 0 && userId?.length !== 0) {
