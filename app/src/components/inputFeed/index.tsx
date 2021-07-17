@@ -8,7 +8,6 @@ const InputFeed = () => {
 
   const sendPost = async () => {
     if (text.length !== 0 && id && id.length !== 0) {
-      console.log(localStorage.getItem("id"));
       const values = {
         text: text,
         userId: id,

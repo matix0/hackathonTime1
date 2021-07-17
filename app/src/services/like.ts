@@ -20,7 +20,6 @@ const postLike = async (values:any) => {
           data: values
           
       })
-      console.log(response.data)
       return response;
   } catch (error) {
       //console.error(`Falha na requisição: ${error}`);

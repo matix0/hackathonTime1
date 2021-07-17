@@ -7,14 +7,12 @@ export default class UserController {
   createFeed = async (req: Request, res: Response) => {
     try {
       if (!req.body.userId) {
-        console.log(req.body.userId);
         return res.status(400).json({ message: "Falha ao obter usuario" });
       }
 
       var user = await User.findById(req.body.userId);
 
       if (!user) {
-        console.log(req.body.userId);
         return res.status(400).json({ message: "Falha ao obter usuario" });
       }
       var feed = await Feed.create({
@@ -22,7 +20,6 @@ export default class UserController {
         text: req.body.text,
       });
 
-      console.log(user);
       return res.status(200).send({ feed });
     } catch (error) {
       return res.status(400).json({ message: `Falha em criar feed,${error}` });
