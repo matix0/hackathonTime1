@@ -22,10 +22,10 @@ function LoginPage() {
       localStorage.setItem("username", response.data.result.username);
       if (localStorage.getItem("token")) {
         history.push("/");
-      }
+      } 
       setError("");
     } catch (err) {
-      console.log(err.message);
+      alert(err.message);
       if (!email || !password) {
         setError("Preencha os campos abaixo");
       } else {
