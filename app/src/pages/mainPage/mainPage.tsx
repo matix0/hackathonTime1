@@ -102,7 +102,8 @@ const MainPage = () => {
                   postId={feedPost._id}
                   liked={feedPost.liked}
                 />
-              ))}
+                ))
+              }
           </div>
         </div>
       </div>
