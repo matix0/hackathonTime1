@@ -84,9 +84,8 @@ const MainPage = () => {
           <LateralBar >
             <div className="infoBox">
               <div className="nameBox">
-                {name}
-                <br/>
-                {username}
+                <h2>{name}</h2>
+                <h3>{username}</h3>
               </div>
             </div>
             <div className="optionsBox">

@@ -37,7 +37,16 @@
 }
 .nameBox {
   display: flex;
+  flex-direction: column;
   white-space: pre-line;
+}
+.nameBox h2{
+  font-size: 1.5rem;
+  margin-bottom: 0.7rem;
+}
+.nameBox h3{
+  font-size: 1.2rem;
+  margin-bottom: 0.7rem;
 }
 
 .userBox {
