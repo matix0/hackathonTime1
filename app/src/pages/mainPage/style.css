@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: row;
 }
-/* .lateralBar {
+.lateralBar {
   display: flex;
   flex-direction: column;
   background-color: #f4f4f4;
@@ -12,7 +12,7 @@
   border-right-color: #808080;
   height: 100vh;
   width: 20vw;
-} */
+}
 
 .postBox {
   display: flex;
@@ -37,7 +37,7 @@
 }
 .nameBox {
   display: flex;
-  white-space: pre-line;
+  /* white-space: pre-line; */
 }
 
 .userBox {
@@ -58,7 +58,7 @@
 /* parte dos posts da galera */
 
 /* Caixa de post do usuario */
-/* .inputBox {
+.inputBox {
   display: flex;
   align-self: center;
   flex-direction: column;
@@ -72,7 +72,7 @@
   border-radius: 25px;
   margin-right: 10vw;
   box-shadow: 4px 3px 4px rgba(0, 0, 0, 0.25);
-} */
+}
 
 .inputUsernameBox {
   display: flex;
@@ -80,10 +80,10 @@
   width: 21vw;
   margin-left: 2.5vw;
   margin-top: 1.7vh;
-   align-self: start; 
+  align-self: start; 
 }
 
-/* .inputField {
+.inputField {
   height: 18vh;
   width: 35vw;
   margin-top: 1vw;
@@ -93,7 +93,7 @@
   border: none;
   outline: none;
   background-color: white;
-} */
+}
 
 .sendBtn {
   margin-left: 27vw;
