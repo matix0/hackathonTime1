@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { postLike } from "../../services/like";
 
-import { FeedBox } from "./styled";
+// import { FeedBox } from "./styled";
 import heart from "../../assets/heart.svg";
 import fullHeart from "../../assets/fullHeart.svg";
 import "./style.css";
@@ -55,7 +55,7 @@ const PostBox = ({ username, text, postId, liked }: PostProps) => {
         id="likeBtn"
         src={heartImg}
         alt="heart"
-        onClick={(e) => {
+        onClick={() => {
           changeHeartColor();
         }}
       />

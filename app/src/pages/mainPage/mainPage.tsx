@@ -4,9 +4,9 @@ import { useHistory } from "react-router-dom";
 import { getUserById } from "../../services/users";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme, GlobalStyle } from "../../components/themes";
-import { LateralBar, InputBox, InputField, PostBoxStyle } from "./styled";
+import { LateralBar, InputBox, PostBoxStyle } from "./styled";
 import Switch from "react-switch";
-import { feedPost, getFeed } from "../../services/feed";
+import { getFeed } from "../../services/feed";
 import InputFeed from "../../components/inputFeed";
 import logOut from "../../assets/log-out.svg";
 import home from "../../assets/home.svg";
@@ -76,17 +76,6 @@ const MainPage = () => {
     setTheme(isDark ? "dark" : "light");
   };
 
-  useEffect(() => {
-    getFeedData();
-    changeName();
-    try {
-      localStorage.getItem("theme");
-    } catch (error) {
-      localStorage.setItem("theme", "light");
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const loadLikePosts = (feedList: any, likeList: any) => {
     const likedFeed = feedList.filter((element: any) => {
       const temp = likeList.map((likeElement: any) => {
@@ -110,6 +99,18 @@ const MainPage = () => {
     setLikes(userLikes);
     loadLikePosts(response.feed, userLikes);
   };
+
+  useEffect(() => {
+    getFeed();
+    getFeedData();
+    changeName();
+    try {
+      localStorage.getItem("theme");
+    } catch (error) {
+      localStorage.setItem("theme", "light");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="container">
@@ -156,8 +157,8 @@ const MainPage = () => {
             </div>
           </div>
         </LateralBar>
-
-        <div>
+      <PostBoxStyle>
+        <InputBox>
           <div className="postBox">
             <InputFeed />
             <div className="scrollBox">
@@ -172,7 +173,8 @@ const MainPage = () => {
                 ))}
             </div>
           </div>
-        </div>
+        </InputBox>
+      </PostBoxStyle>
       </ThemeProvider>
     </div>
   );
