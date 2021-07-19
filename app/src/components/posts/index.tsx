@@ -55,7 +55,7 @@ const PostBox = ({ username, text, postId, liked }: PostProps) => {
         id="likeBtn"
         src={heartImg}
         alt="heart"
-        onClick={() => {
+        onClick={(e) => {
           changeHeartColor();
         }}
       />
