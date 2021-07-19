@@ -18,12 +18,25 @@ Consiste em uma cópia com as funcionalidades básicas do Twitter, para que os m
 
 ## Rodando o projeto
 
-Para rodar o projeto, deve-se entrar tanto na pasta 'server' e pasta 'app' e rodar o comando:
+Para rodar o projeto, deve-se rodar o comando:
 
-* yarn install
+- make yarn
 
-Depois vá para a pasta raiz do projeto e rode:
+Depois:
 
-* sudo docker-compose up --build
+- sudo make serve
+
 # HackathonOrc
+
 # hackathonTime1
+
+- Gerente: _[Matheus Salles Blanco](https://github.com/MatheusBlanco)_
+
+- Membro: _[Ciro Araújo](https://github.com/ciro-c)_
+
+- Membro: _[Mateus Vieira](https://github.com/matix0)_
+
+- Membro: _[Maurício Machado](https://github.com/MauricioMachadoFF)_
+
+- Membro: _[Thyago Moura](https://github.com/thyagomoura)_
+
