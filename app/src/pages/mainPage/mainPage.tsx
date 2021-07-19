@@ -114,68 +114,70 @@ const MainPage = () => {
 
   return (
     <div className="container">
-      <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+      {/* <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
         <GlobalStyle />
-        <LateralBar>
-          <div className="infoBox">
-            <div className="nameBox">
-              {name}
-              <br />
-              {username}
-            </div>
+        <LateralBar> */}
+      <div className="lateralBar">
+        <div className="infoBox">
+          <div className="nameBox">
+            {name}
+            <br />
+            {username}
           </div>
-          <div className="optionsBox">
-            <Switch
-              className="switch"
-              onChange={() => {
-                changeTheme();
-              }}
-              checked={theme === "dark"}
-              uncheckedIcon
-            />
-            <div className="svgBtn">
-              <img src={home} alt="home" />
-              <p>Home</p>
-            </div>
-            <div
-              className="svgBtn profile"
-              onClick={() => {
-                goProfile();
-              }}
-            >
-              <img src={userProfile} alt="home" />
-              <p>Perfil</p>
-            </div>
-            <div
-              className="svgBtn logout"
-              onClick={() => {
-                handleLogin();
-              }}
-            >
-              <img src={logOut} alt="logout" />
-              <p>Sair</p>
-            </div>
+        </div>
+        <div className="optionsBox">
+          {/* <Switch
+            className="switch"
+            onChange={() => {
+              changeTheme();
+            }}
+            checked={theme === "dark"}
+            uncheckedIcon
+          /> */}
+          <div className="svgBtn">
+            <img src={home} alt="home" />
+            <p>Home</p>
           </div>
-        </LateralBar>
-      <PostBoxStyle>
-        <InputBox>
-          <div className="postBox">
-            <InputFeed />
-            <div className="scrollBox">
-              {feed.length !== 0 &&
-                feed.map((feedPost) => (
-                  <PostBox
-                    username={feedPost.userId.username}
-                    text={feedPost.text}
-                    postId={feedPost._id}
-                    liked={feedPost.liked}
-                  />
-                ))}
-            </div>
+          <div
+            className="svgBtn profile"
+            onClick={() => {
+              goProfile();
+            }}
+          >
+            <img src={userProfile} alt="home" />
+            <p>Perfil</p>
           </div>
-        </InputBox>
-      </PostBoxStyle>
-      </ThemeProvider>
+          <div
+            className="svgBtn logout"
+            onClick={() => {
+              handleLogin();
+            }}
+          >
+            <img src={logOut} alt="logout" />
+            <p>Sair</p>
+          </div>
+        </div>
+      </div>
+      {/* </LateralBar> */}
+      {/* <PostBoxStyle> */}
+      {/* <InputBox> */}
+      <div className="postBox">
+        <InputFeed />
+        <div className="scrollBox">
+          {feed.length !== 0 &&
+            feed.map((feedPost) => (
+              <PostBox
+                username={feedPost.userId.username}
+                text={feedPost.text}
+                postId={feedPost._id}
+                liked={feedPost.liked}
+              />
+            ))}
+        </div>
+      </div>
+      {/* </InputBox> */}
+      {/* </PostBoxStyle> */}
+      {/* </ThemeProvider> */}
     </div>
   );
 };
