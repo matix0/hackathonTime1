@@ -41,7 +41,7 @@ const PostBox = ({ username, text, postId, liked }: PostProps) => {
       };
       try {
         await postLike(values);
-      } catch (error) {
+      } catch (error: any) {
         alert(error.message);
       }
     }
