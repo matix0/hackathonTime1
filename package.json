@@ -6,9 +6,9 @@
   },
   "homepage": "https://matix0.github.io/twittorc",
   "scripts": {
-        "predeploy": "npm run build",
-        "deploy": "gh-pages -b master -d build",
-        "start": "make yarn",
-        "build": "make serve"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start": "make yarn",
+    "build": "make serve"
   }
 }
