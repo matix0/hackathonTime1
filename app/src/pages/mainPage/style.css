@@ -12,6 +12,7 @@
   border-right-color: #808080;
   height: 100vh;
   width: 20vw;
+  /**/
 }
 
 .postBox {
@@ -52,7 +53,7 @@
   margin-top: 7vh;
   width: 15vw;
 }
-.switch{
+.switch {
   align-self: flex-start;
 }
 /* parte dos posts da galera */
@@ -80,7 +81,7 @@
   width: 21vw;
   margin-left: 2.5vw;
   margin-top: 1.7vh;
-  align-self: start; 
+  align-self: start;
 }
 
 .inputField {
@@ -109,15 +110,15 @@
 }
 /* Caixa de post dos outros  */
 
-.scrollBox{
+.scrollBox {
   margin-left: 14.5vw;
   width: 65.5vw;
   height: 80vh;
   margin-top: 2vh;
   overflow-y: auto;
-} 
+}
 
-.svgBtn{
+.svgBtn {
   margin-top: 2vh;
   display: flex;
   justify-content: left;
@@ -126,7 +127,7 @@
   width: 15vw;
 }
 
-.svgBtn img{
+.svgBtn img {
   height: 8vh;
 }
 
